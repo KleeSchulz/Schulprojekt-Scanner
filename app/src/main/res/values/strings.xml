@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">FBS-Scanner</string>
+    <string name="zum_Scan">Raum Scannen</string>
+    <string name="raumname">Raumname:</string>
+    <string name="typ">Gerätetyp:</string>
+    <string name="scan">Scannen</string>
+    <string name="manuelscan">Manuell hinzufügen</string>
+    <string name="delete">Löschen</string>
+    <string name="lastscan">Letzter Scan:</string>
+    <string name="export">Exportieren</string>
+    <string name="notiz">Bemerkung:</string>
+    <string name="str_add">Gerät hinzufügen</string>
+    <string name="str_abschliessen">Raumerfassung abschließen</string>
+    <string name="delte">Raum löschen</string>
+    <string-array name="typen">
+        <item>Monitor</item>
+        <item>PC</item>
+        <item>Drucker</item>
+        <item>Beamer</item>
+    </string-array>
+</resources>
