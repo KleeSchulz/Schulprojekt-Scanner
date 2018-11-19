@@ -4,144 +4,145 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Scannen">
+    tools:context=".Activityklassen.Scannen">
 
     <TextView
         android:id="@+id/tv_raumname"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/raumname"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="21dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/tv_raumname"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_raumname"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tv_typ"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="76dp"
-        android:text="@string/typ"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/tv_typ"
+        app:layout_constraintBaseline_toBaselineOf="@+id/spin_typen"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_inventarnummer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/tv_inventarnummer"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_inventarnummer"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_notiz"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/tv_notiz"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_notiz"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/et_raumname"
-        android:layout_width="wrap_content"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Raumname eingeben"
-        android:inputType="text"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="8dp" />
-
-    <Spinner
-        android:id="@+id/spin_geraeet"
-        android:layout_width="0dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:entries="@array/typen"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.615"
-        app:layout_constraintStart_toEndOf="@+id/tv_typ"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_scan"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="@string/scan"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_bemerkung" />
-
-    <Button
-        android:id="@+id/btn_add"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="@string/str_add"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_scan" />
-
-    <Button
-        android:id="@+id/btn_end"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="@string/str_abschliessen"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_add" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="36dp"
-        android:text="@string/lastscan"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_typ" />
-
-    <EditText
-        android:id="@+id/et_bemerkung"
-        android:layout_width="269dp"
-        android:layout_height="92dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:ems="10"
-        android:hint="Bemerkung:"
-        android:inputType="textPersonName"
-        android:text="Bemerkung:"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_lastScan" />
-
-    <EditText
-        android:id="@+id/et_lastScan"
-        android:layout_width="171dp"
-        android:layout_height="44dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:ems="10"
-        android:hint="letzer Scan"
-        android:inputType="textPersonName"
+        android:hint="@string/et_raumname_hint"
+        android:inputType="text"
+        android:maxLines="1"
+        app:layout_constraintStart_toEndOf="@+id/tv_inventarnummer"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spin_typen"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:entries="@array/typen"
+        app:layout_constraintStart_toEndOf="@+id/tv_inventarnummer"
+        app:layout_constraintTop_toBottomOf="@+id/et_raumname" />
+
+    <EditText
+        android:id="@+id/et_inventarnummer"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/et_inventarnummer_hint"
+        android:inputType="text"
+        android:maxLines="1"
+        app:layout_constraintStart_toEndOf="@+id/tv_inventarnummer"
+        app:layout_constraintTop_toBottomOf="@+id/spin_typen" />
+
+    <EditText
+        android:id="@+id/et_notiz"
+        android:layout_width="248dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/et_notiz_hint"
+        android:inputType="textMultiLine"
+        android:lines="4"
+        android:singleLine="false"
+        app:layout_constraintStart_toEndOf="@+id/tv_inventarnummer"
+        app:layout_constraintTop_toBottomOf="@+id/btn_scan" />
+
+    <Button
+        android:id="@+id/btn_scan"
+        android:layout_width="143dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        android:text="@string/btn_scan"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.302"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/spin_geraeet" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_inventarnummer" />
+
+    <Button
+        android:id="@+id/btn_hinzufuegen"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/btn_hinzufuegen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_notiz" />
+
+    <Button
+        android:id="@+id/btn_erfassungsende"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/btn_erfassungsende"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

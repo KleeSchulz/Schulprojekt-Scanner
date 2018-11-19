@@ -1,4 +1,4 @@
-package com.scanner.fbs_scanner;
+package com.scanner.fbs_scanner.Activityklassen;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,28 +11,34 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.scanner.fbs_scanner.Geraet;
+import com.scanner.fbs_scanner.IntentIntegrator;
+import com.scanner.fbs_scanner.IntentResult;
+import com.scanner.fbs_scanner.R;
+
+import static com.scanner.fbs_scanner.Activityklassen.Hauptmenue.tinyDB;
+
 public class Scannen extends AppCompatActivity {
 
     String scanstring;
-    TinyDB tinyDB;
     final static int maxzeichen = 200;
     EditText et_raum,et_lastscan,et_bemerkung;
     Button btn_scannen,btn_beenden,btn_add;
     Spinner spin_geraet;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scannen);
 //=======================================Zuweisung==================================================
-        tinyDB = new TinyDB(this);
-        et_lastscan = (EditText) findViewById(R.id.et_lastScan);
-        et_raum =(EditText)findViewById(R.id.et_raumname);
-        spin_geraet = (Spinner)findViewById(R.id.spin_geraeet);
-        et_bemerkung =(EditText)findViewById(R.id.et_bemerkung);
-        btn_scannen = (Button)findViewById(R.id.btn_scan);
-        btn_add = (Button)findViewById(R.id.btn_add);
-        btn_beenden = (Button)findViewById(R.id.btn_end);
+        et_lastscan = findViewById(R.id.et_inventarnummer);
+        et_raum = findViewById(R.id.et_raumname);
+        spin_geraet = findViewById(R.id.spin_typen);
+        et_bemerkung = findViewById(R.id.et_notiz);
+        btn_scannen = findViewById(R.id.btn_scan);
+        btn_add = findViewById(R.id.btn_hinzufuegen);
+        btn_beenden = findViewById(R.id.btn_erfassungsende);
 //=============================Uebergabe Raum=======================================================
         Bundle b = getIntent().getExtras();
         String raum = b.getString("RAUM");

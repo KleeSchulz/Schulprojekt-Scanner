@@ -1,9 +1,15 @@
-package com.scanner.fbs_scanner;
+package com.scanner.fbs_scanner.Activityklassen;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Anzzeige extends AppCompatActivity {
+import com.scanner.fbs_scanner.Geraet;
+import com.scanner.fbs_scanner.R;
+
+import java.util.ArrayList;
+
+public class Anzeige extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

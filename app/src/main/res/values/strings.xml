@@ -1,17 +1,34 @@
 <resources>
     <string name="app_name">FBS-Scanner</string>
-    <string name="zum_Scan">Raum Scannen</string>
-    <string name="raumname">Raumname:</string>
-    <string name="typ">Gerätetyp:</string>
-    <string name="scan">Scannen</string>
+    <string name="btn_erfassen">Raum erfassen</string>
+    <string name="btn_anzeigen">Räume anzeigen</string>
+
+    <string name="tv_raumname">Raumname:</string>
+    <string name="tv_typ">Gerätetyp:</string>
+    <string name="tv_inventarnummer">Inventarnummer:</string>
+    <string name="tv_notiz">Notiz:</string>
+
+    <string name="et_raumname_hint">Raumname eingeben...</string>
+    <string name="et_inventarnummer_hint">Letzter Scan...</string>
+    <string name="et_notiz_hint">Bemerkung eingeben... (optional)</string>
+    <string name="btn_scan">Scannen</string>
+    <string name="btn_hinzufuegen">Gerät hinzufügen</string>
+    <string name="btn_erfassungsende">Raumerfassung abschließen</string>
+
+
+    <!-- Dies muss noch geprüft werden (außer Array) -->
+
     <string name="manuelscan">Manuell hinzufügen</string>
     <string name="delete">Löschen</string>
-    <string name="lastscan">Letzter Scan:</string>
+
     <string name="export">Exportieren</string>
     <string name="notiz">Bemerkung:</string>
-    <string name="str_add">Gerät hinzufügen</string>
-    <string name="str_abschliessen">Raumerfassung abschließen</string>
+
+    <string name="add">Hinzufügen</string>
     <string name="delte">Raum löschen</string>
+
+
+
     <string-array name="typen">
         <item>Monitor</item>
         <item>PC</item>
