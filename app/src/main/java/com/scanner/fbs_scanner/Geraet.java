@@ -1,9 +1,8 @@
 package com.scanner.fbs_scanner;
 
-// Jede Instanz dieser Klasse enthält die Informationen für ein Gerät
-
 import java.util.ArrayList;
 
+// Jede Instanz dieser Klasse enthält die Informationen für ein Gerät
 public class Geraet {
 
     private String raumNr;

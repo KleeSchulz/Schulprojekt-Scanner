@@ -3,15 +3,18 @@ package com.scanner.fbs_scanner.Activityklassen;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 
+import com.scanner.fbs_scanner.DateiHelper;
 import com.scanner.fbs_scanner.R;
 import com.scanner.fbs_scanner.TinyDB;
 
@@ -30,6 +33,19 @@ public class Hauptmenue extends AppCompatActivity {
         btn_raumerfassen = findViewById(R.id.btn_erfassen);
         btn_anzeigen = findViewById(R.id.btn_anzeigen);
         tinyDB = new TinyDB(this);
+
+        //*****************************************************************************
+        Button requestPermButton = findViewById( R.id.btn_testRequestPermission );
+        DateiHelper.activityPlaceholder = Hauptmenue.this;
+        requestPermButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DateiHelper.fordereLesePermissionAn();
+            }
+        } );
+        //*****************************************************************************
+
+
 
         /* bei Drücken des Buttons btn_raumerfassen wird ein Eingabefeld für den Raumnamen
            angezeigt und dessen Inhalt validiert */
@@ -96,5 +112,30 @@ public class Hauptmenue extends AppCompatActivity {
 
 
 
+    }
+
+    // nimmt das Ergebnis jeder Permissionanfrage (READ und WRITE) entgegen
+    // diese Methode muss in jeder Activity implementiert werden, in der die Permissions angefragt werden
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults ){
+
+        if(requestCode == DateiHelper.REQUEST_CODE_READ){
+            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this, "Lesezugriff erteilt.",Toast.LENGTH_SHORT).show();
+                // lese Datei aus ...
+            }
+            else {
+                Toast.makeText(this, "Lesezugriff verweigert.",Toast.LENGTH_SHORT).show();
+            }
+        }
+        else if(requestCode == DateiHelper.REQUEST_CODE_WRITE){
+            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this, "Schreibzugriff erteilt.", Toast.LENGTH_SHORT).show();
+                // erstelle Datei, schreibe in Datei ...
+            }
+            else{
+                Toast.makeText(this, "Lesezugriff verweigert.",Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

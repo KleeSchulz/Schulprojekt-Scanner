@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.scanner.fbs_scanner.DateiHelper;
 import com.scanner.fbs_scanner.Geraet;
 import com.scanner.fbs_scanner.IntentIntegrator;
 import com.scanner.fbs_scanner.IntentResult;
