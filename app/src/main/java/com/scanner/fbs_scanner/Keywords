@@ -1,5 +1,15 @@
+*****************************
+|| Bundle- bzw. Intentkeys ||
+*****************************
+KEY_RAUM = liefert den im AlertDialog eingegebenen Raumnamen an die Scannenactivity
 
 
+
+
+____________________________________________________________________________________________________
+*****************************
+||       TinyDB-Keys       ||
+*****************************
 VOR = Boolean -> wird gebraucht um zu Überprüfen, ob  Datei im Zwischenspeicher sind
 RAUMSAFE = String -> Darin Datei speicher für Raumabgabe
 DATENTYP = String -> Darin werden die Dateien gespeichert, welche die Datei erzeugen

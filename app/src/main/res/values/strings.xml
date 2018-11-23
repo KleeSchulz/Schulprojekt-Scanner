@@ -7,10 +7,11 @@
     <string name="tv_typ">Gerätetyp:</string>
     <string name="tv_inventarnummer">Inventarnummer:</string>
     <string name="tv_notiz">Notiz:</string>
+    <string name="tv_geraetecounter">Erfasste Geräte: %1$s</string>
 
     <string name="et_raumname_hint">Raumname eingeben...</string>
     <string name="et_inventarnummer_hint">Letzter Scan...</string>
-    <string name="et_notiz_hint">Bemerkung eingeben... (optional)</string>
+    <string name="et_notiz_hint">Bemerkung ... (optional)</string>
     <string name="btn_scan">Scannen</string>
     <string name="btn_hinzufuegen">Gerät hinzufügen</string>
     <string name="btn_erfassungsende">Raumerfassung abschließen</string>
@@ -30,8 +31,8 @@
 
 
     <string-array name="typen">
-        <item>Monitor</item>
         <item>PC</item>
+        <item>Monitor</item>
         <item>Drucker</item>
         <item>Beamer</item>
     </string-array>

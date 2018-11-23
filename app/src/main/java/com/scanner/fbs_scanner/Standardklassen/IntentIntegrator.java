@@ -1,4 +1,4 @@
-package com.scanner.fbs_scanner;
+package com.scanner.fbs_scanner.Standardklassen;
 
 import java.util.Arrays;
 import java.util.Collection;

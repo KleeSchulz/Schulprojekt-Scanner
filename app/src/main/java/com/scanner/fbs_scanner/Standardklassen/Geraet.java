@@ -1,26 +1,32 @@
-package com.scanner.fbs_scanner;
+package com.scanner.fbs_scanner.Standardklassen;
+
+import android.os.Environment;
 
 import java.util.ArrayList;
 
 // Jede Instanz dieser Klasse enthält die Informationen für ein Gerät
 public class Geraet {
 
-    private String raumNr;
+    private String raumName;
     private String geraeteTyp;
     private String inventarnummer;
     private String notiz;
     public static ArrayList<Geraet> geraeteliste = new ArrayList<>(  );
 
-    public Geraet(String raumNr, String geraeteTyp, String inventarnummer, String notiz)
+    public Geraet(String raumName, String geraeteTyp, String inventarnummer, String notiz)
     {
-        this.raumNr = raumNr;
+        this.raumName = raumName;
         this.geraeteTyp = geraeteTyp;
         this.inventarnummer = inventarnummer;
         this.notiz = notiz;
     }
 
-    public String getRaumNr() {
-        return raumNr;
+    public String gibDateiFormat(){
+        return this.raumName.trim() + ";" + this.geraeteTyp + ";" + this.inventarnummer.trim() + ";" + this.notiz.trim() + "\n";
+    }
+
+    public String getRaumName() {
+        return raumName;
     }
 
     public String getGeraeteTyp() {
@@ -35,8 +41,8 @@ public class Geraet {
         return notiz;
     }
 
-    public void setRaumNr(String raumNr) {
-        this.raumNr = raumNr;
+    public void setRaumNr(String raumName) {
+        this.raumName = raumName;
     }
 
     public void setGeraeteTyp(String geraeteTyp) {

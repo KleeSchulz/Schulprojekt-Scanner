@@ -12,9 +12,19 @@
         android:layout_height="21dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         android:text="@string/tv_raumname"
-        app:layout_constraintBaseline_toBaselineOf="@+id/et_raumname"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_raumname_anz"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_raumname"
+        app:layout_constraintStart_toEndOf="@+id/tv_inventarnummer" />
 
     <TextView
         android:id="@+id/tv_typ"
@@ -46,19 +56,18 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/et_notiz"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/et_raumname"
-        android:layout_width="190dp"
+    <TextView
+        android:id="@+id/tv_geraetecounter"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="@string/et_raumname_hint"
-        android:inputType="text"
-        android:maxLines="1"
-        app:layout_constraintStart_toEndOf="@+id/tv_inventarnummer"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="240dp"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_hinzufuegen" />
 
     <Spinner
         android:id="@+id/spin_typen"
@@ -69,7 +78,7 @@
         android:layout_marginTop="16dp"
         android:entries="@array/typen"
         app:layout_constraintStart_toEndOf="@+id/tv_inventarnummer"
-        app:layout_constraintTop_toBottomOf="@+id/et_raumname" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_raumname_anz" />
 
     <EditText
         android:id="@+id/et_inventarnummer"
@@ -80,6 +89,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/et_inventarnummer_hint"
+        android:imeOptions="actionDone"
         android:inputType="text"
         android:maxLines="1"
         app:layout_constraintStart_toEndOf="@+id/tv_inventarnummer"
@@ -88,14 +98,16 @@
     <EditText
         android:id="@+id/et_notiz"
         android:layout_width="248dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/et_notiz_hint"
+        android:imeOptions="actionDone"
         android:inputType="textMultiLine"
-        android:lines="4"
+        android:maxLength="70"
+        android:maxLines="3"
         android:singleLine="false"
         app:layout_constraintStart_toEndOf="@+id/tv_inventarnummer"
         app:layout_constraintTop_toBottomOf="@+id/btn_scan" />
@@ -138,7 +150,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="80dp"
         android:text="@string/btn_erfassungsende"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

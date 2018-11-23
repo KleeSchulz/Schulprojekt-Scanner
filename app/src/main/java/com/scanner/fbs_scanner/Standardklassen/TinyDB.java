@@ -1,4 +1,4 @@
-package com.scanner.fbs_scanner;
+package com.scanner.fbs_scanner.Standardklassen;
 
 import java.io.File;
 import java.io.FileOutputStream;

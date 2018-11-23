@@ -2,6 +2,8 @@ package com.scanner.fbs_scanner.Activityklassen;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,49 +11,55 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.scanner.fbs_scanner.DateiHelper;
-import com.scanner.fbs_scanner.Geraet;
-import com.scanner.fbs_scanner.IntentIntegrator;
-import com.scanner.fbs_scanner.IntentResult;
+import com.scanner.fbs_scanner.Standardklassen.DateiHelper;
+import com.scanner.fbs_scanner.Standardklassen.Geraet;
+import com.scanner.fbs_scanner.Standardklassen.IntentIntegrator;
+import com.scanner.fbs_scanner.Standardklassen.IntentResult;
 import com.scanner.fbs_scanner.R;
 
-import static com.scanner.fbs_scanner.Activityklassen.Hauptmenue.tinyDB;
 
 public class Scannen extends AppCompatActivity {
 
-    String scanstring;
-    final static int maxzeichen = 200;
-    EditText et_raum,et_lastscan,et_bemerkung;
-    Button btn_scannen,btn_beenden,btn_add;
-    Spinner spin_geraet;
-
+    EditText et_inventarnummer,et_notiz;
+    Button btn_scannen,btn_erfassungsende,btn_hinzufuegen;
+    Spinner spin_typen;
+    TextView tv_raumname_anz, tv_geraeteCounter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scannen);
-//=======================================Zuweisung==================================================
-        et_lastscan = findViewById(R.id.et_inventarnummer);
-        et_raum = findViewById(R.id.et_raumname);
-        spin_geraet = findViewById(R.id.spin_typen);
-        et_bemerkung = findViewById(R.id.et_notiz);
+
+        // Zuweisungen
+        et_inventarnummer = findViewById(R.id.et_inventarnummer);
+        tv_raumname_anz = findViewById(R.id.tv_raumname_anz);
+        spin_typen = findViewById(R.id.spin_typen);
+        et_notiz = findViewById(R.id.et_notiz);
         btn_scannen = findViewById(R.id.btn_scan);
-        btn_add = findViewById(R.id.btn_hinzufuegen);
-        btn_beenden = findViewById(R.id.btn_erfassungsende);
-//=============================Uebergabe Raum=======================================================
+        btn_hinzufuegen = findViewById(R.id.btn_hinzufuegen);
+        btn_erfassungsende = findViewById(R.id.btn_erfassungsende);
+        tv_geraeteCounter = findViewById(R.id.tv_geraetecounter);
+
+        // Übergabe des Raums
         Bundle b = getIntent().getExtras();
-        String raum = b.getString("RAUM");
-        et_raum.setText(raum);
+        String raum = b.getString("KEY_RAUM");
+        tv_raumname_anz.setText(raum);
+
+        /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         if (b.getBoolean("VOR")){
             scanstring = tinyDB.getString("DATENTYP");
-            et_raum.setText(tinyDB.getString("RAUMSAFE"));
+            et_raumname.setText(tinyDB.getString("RAUMSAFE"));
         }
         else {
             scanstring = "";
         }
-//===============================Scannen über Barcodescanner========================================
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+        // hier erfolgt der Scanvorgang über den Barcodescanner
+        // das Ergebnis wird in der Methode onActivityResult entgegengenmommen
         btn_scannen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,74 +67,129 @@ public class Scannen extends AppCompatActivity {
                 integrator.initiateScan();
             }
         });
-//===============================Gerät hinzufügen===================================================
-        //Prüfen ob Felder gefüllt (EAN und Raum und Max. Notzizlänge)
-        btn_add.setOnClickListener(new View.OnClickListener() {
+
+        // Gerät wird einer Liste hinzugefügt (noch nicht persistent)
+        // zuvor findet eine Validierung der Felder statt
+        btn_hinzufuegen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (et_lastscan.getText().toString().length() == 0){
-                    Toast.makeText(Scannen.this, "Barcode ist leer", Toast.LENGTH_SHORT).show();
+                if (tv_raumname_anz.getText().toString().length() == 0){
+                    Toast.makeText(Scannen.this, "Raumname ist leer!", Toast.LENGTH_SHORT).show();
                 }
-                else if (et_raum.getText().toString().length() == 0){
-                    Toast.makeText(Scannen.this, "Raumnummer ist leer!", Toast.LENGTH_SHORT).show();
-                }
-                else if (et_bemerkung.getText().toString().length() > maxzeichen){
-                    int zuviel = et_bemerkung.getText().toString().length() - maxzeichen ;
-                    Toast.makeText(Scannen.this, "Das Feld hat " + zuviel +" Zeichen zu viel. Maximale Zeichenlänge:" + maxzeichen, Toast.LENGTH_SHORT).show();
+                else if (et_inventarnummer.getText().toString().length() == 0){
+                    Toast.makeText(Scannen.this, "Inventarnummer ist leer!", Toast.LENGTH_SHORT).show();
                 }
                 else {
+                    /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     //Eintrag in die TinyDB/PrefKeys
-                     scanstring = et_raum.getText().toString() + ";" + spin_geraet.toString() + ";" + et_lastscan.getText().toString() + ";" + et_bemerkung.getText().toString() + "\n" + scanstring;
+                     scanstring = et_raumname.getText().toString() + ";" + spin_typen.toString() + ";" + et_inventarnummer.getText().toString() + ";" + et_notiz.getText().toString() + "\n" + scanstring;
                      tinyDB.putString("DATENTYP",scanstring);
-                    //Leeren vom Barcode
-                    et_lastscan.setText("");
-                    //Meldung Gerät hinzugefügt
-                    Toast.makeText(Scannen.this, "Gerät hinzugefügt", Toast.LENGTH_SHORT).show();
+                    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+                    // erstellt ein Objekt der Klasse Geraet mit den Daten der Felder
+                    // ist das Notizfeld leer, wird "-" übergeben
+                    Geraet geraet = new Geraet(
+                            tv_raumname_anz.getText().toString(),
+                            spin_typen.getSelectedItem().toString(),
+                            et_inventarnummer.getText().toString(),
+                            et_notiz.getText().toString().matches( "" ) ? "-" : et_notiz.getText().toString());
+
+                    Geraet.geraeteliste.add(geraet);
+                    tv_geraeteCounter.setText(getString(R.string.tv_geraetecounter,String.valueOf(Geraet.geraeteliste.size())));
+
+                    // Meldung: Gerät hinzugefügt
+                    Toast.makeText(Scannen.this, "Gerät hinzugefügt.", Toast.LENGTH_SHORT).show();
+
+                    //Leeren des Inventarnummer- und Notizfeldes
+                    et_inventarnummer.setText("");
+                    et_notiz.setText("");
                 }
             }
         });
-//===============================Raumerfassung abschließen==========================================
-        btn_beenden.setOnClickListener(new View.OnClickListener() {
+
+        // wurden Geräte erfasst, dann fordere Berechtigungen an und werte die Anfrage unten in der Methode
+        // onRequestPermissionsResult aus, wo das Erstellen der Datei geschieht
+        // wurde nichts erfasst, frage, ob die Erfassung abgebrochen werden soll
+        btn_erfassungsende.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Schreiben in Datei
+                if(Geraet.geraeteliste.size() > 0) {
+                    DateiHelper.activityPlaceholder = Scannen.this;
+                    DateiHelper.fordereLeseUndSchreibPermissionAn();
+                }
+                else{
+                    new AlertDialog.Builder( Scannen.this )
+                            .setTitle( "Erfassung abbrechen?" )
+                            .setMessage( "Es wurden keine Geräte erfasst. Wollen Sie die Erfassung abbrechen?" )
+                            .setPositiveButton( "Ja", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    startActivity(new Intent(Scannen.this, Hauptmenue.class));
+                                }
+                            } )
+                            .setNegativeButton( "Nein", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            } )
+                            .create().show();
+                }
+                /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 tinyDB.getString("DATENTYP"); //-> Der String muss eingefügt werden
-                //Datei vorhanden (wenn ja überschreiben, sonst anlegen)
-                //Anhängen an die Datei
                 //Datenspeicher leer setzten
                 tinyDB.putString("DATENTYP","");
-                //Wechsel zum Hauptmenü
-                startActivity(new Intent(Scannen.this, Hauptmenue.class));
+                !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
             }
         });
     }
-//===============================Scanvorgang abbrechen==============================================
+
+    // bei Betätigen der Zurücktaste kommt folgende Meldung
     @Override
     public void onBackPressed() {
-        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setMessage("Scan abbrechen und Daten löschen?");
-        alertDialogBuilder.setPositiveButton("Löschen",
-                new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder( Scannen.this )
+                .setTitle( "Erfassung abbrechen?" )
+                .setMessage( "Erfassung abbrechen und Daten löschen?" )
+                .setPositiveButton( "Ja", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        tinyDB.putString("DATENTYP","");
-                        startActivity(new Intent(Scannen.this,Hauptmenue.class));
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent(Scannen.this, Hauptmenue.class));
                     }
-                });
-        alertDialogBuilder.setNegativeButton("Abbrechen",new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        });
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
+                } )
+                .setNegativeButton( "Nein", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                } )
+                .create().show();
     }
-//========================================Scan wenn Erfolgreich=====================================
+
+    // Behandlung des Scanergebnisses - wenn erfolgreich, befülle Inventarnummerfeld
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if (scanResult != null) {
             String barcode = scanResult.getContents();
-            et_lastscan.setText(barcode);
+            et_inventarnummer.setText(barcode);
+        }
+    }
+
+    // nimmt das Ergebnis einer Permissionanfrage entgegen
+    // diese Methode muss in jeder Activity implementiert werden, in der die Permissions angefragt werden
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults ){
+
+
+        if(requestCode == DateiHelper.STORAGE_REQUEST_CODE){
+            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                DateiHelper.erzeugeUndBeschreibeDatei();
+                Toast.makeText(this, "Berechtigung erteilt.\nDatei wurde erstellt.",Toast.LENGTH_LONG).show();
+                Geraet.geraeteliste.clear();
+                startActivity(new Intent(Scannen.this, Hauptmenue.class));
+            }
+            else {
+                Toast.makeText(this, "Berechtigung verweigert.",Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }
