@@ -10,36 +10,30 @@ import android.os.Build;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.widget.Toast;
-
 import com.scanner.fbs_scanner.Activityklassen.Hauptmenue;
-import com.scanner.fbs_scanner.Activityklassen.Scannen;
-
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-
 // Diese Klasse ermöglicht diverse Dateioperationen
-public final class DateiHelper{ //implements ActivityCompat.OnRequestPermissionsResultCallback{
-
-
-    // TODO: lies den Inhalt der jeweiligen Datei aus
-
-    // TODO: liefere alle Dateinamen eines Verzeichnisses und returne sie in Form eines Stringarrays
-
+public final class DateiHelper{
 
     // bevor Berechtigungen abgefragt werden, dieser Variable die anfragende Activityklasse zuweisen
-    // (DateiHelper.activityPlaceholder = Hauptmenue.this;)
+    // (z.B. DateiHelper.activityPlaceholder = Hauptmenue.this;)
     public static Activity activityPlaceholder;
 
     private static boolean externerSpeicherLesbar, externerSpeicherBeschreibbar;
     public static final String schreibPermission = Manifest.permission.WRITE_EXTERNAL_STORAGE;
     public static final String lesePermission= Manifest.permission.READ_EXTERNAL_STORAGE;
     public static final int STORAGE_REQUEST_CODE = 100;
+    private static File rootVerzeichnis = Environment.getExternalStorageDirectory();
+    private static File csvVerzeichnis = new File(rootVerzeichnis.getAbsolutePath(),"/FBS");
 
 
     // prüft, ob hardwareseitig Speicher zum Lesen und Schreiben verfügbar ist und setzt entsprechend die Variablen
@@ -65,7 +59,6 @@ public final class DateiHelper{ //implements ActivityCompat.OnRequestPermissions
             return;
         }
         else {
-            // wenn die Permissions vorliegen, mache nichts
             if(ContextCompat.checkSelfPermission(activityPlaceholder, lesePermission) != PackageManager.PERMISSION_GRANTED &&
                     ContextCompat.checkSelfPermission(activityPlaceholder, schreibPermission) != PackageManager.PERMISSION_GRANTED) {
 
@@ -91,8 +84,7 @@ public final class DateiHelper{ //implements ActivityCompat.OnRequestPermissions
                     ActivityCompat.requestPermissions(activityPlaceholder, new String[]{lesePermission, schreibPermission}, STORAGE_REQUEST_CODE );
                 }
             }
-            // verdammt noch mal, ich saß jetzt 3 1/2 Stunden deswegen hier
-            // sind die Berechtigungen schon da, springt das Programm nicht in die onRequestPermissionsResult
+            // sind die Berechtigungen schon vorhanden, springt das Programm nicht in die onRequestPermissionsResult
             // Methode, deswegen müssen an dieser Stelle die sonst üblichen Operationen durchgeführt werden!
             else {
                 erzeugeUndBeschreibeDatei();
@@ -111,12 +103,10 @@ public final class DateiHelper{ //implements ActivityCompat.OnRequestPermissions
 
             pruefeSpeicher();
             if (externerSpeicherBeschreibbar) {
-                File rootVerzeichnis = Environment.getExternalStorageDirectory();
-                File dir = new File( rootVerzeichnis.getAbsolutePath() + "/FBS" );
-                if (!dir.exists()) {
-                    dir.mkdir();
+                if (!csvVerzeichnis.exists()) {
+                    csvVerzeichnis.mkdir();
                 }
-                File datei = new File( dir, dateiRaumName );
+                File datei = new File( csvVerzeichnis, dateiRaumName );
                 try {
                     FileOutputStream fos = new FileOutputStream( datei, false );
                     for (Geraet geraet : Geraet.geraeteliste) {
@@ -131,21 +121,48 @@ public final class DateiHelper{ //implements ActivityCompat.OnRequestPermissions
                 }
             }
         }
-     }
-
-    public static void leseDateiAus(String ausgewaehlteDatei)
-    {
-        // gehe alle Dateien im Verzeichnis FBS durch
-        // wenn Dateiname == im Spinner ausgewählter Name, dann lese Datei aus
-        // zeige die Daten tabellarisch an
     }
 
+    // gleicht den übergebenen Raumnamen (ohne .csv) mit den im Verzeichnis FBS befindlichen csv-Dateien
+    // ab, bei Übereinstimmung wird die jeweilige Datei ausgelesen und in Form eines Geraete-Arrays zurückgegeben
+    public static ArrayList<Geraet> leseDateiAus(String ausgewaehlterRaum)
+    {
+        ArrayList<Geraet> listeErfassungen = new ArrayList<>();
+
+        for(File f : csvVerzeichnis.listFiles()){
+            if(f.getName().substring(0,f.getName().length() -4).equals(ausgewaehlterRaum)){
+                File file = new File(csvVerzeichnis,f.getName());
+                try {
+                    BufferedReader br = new BufferedReader(new FileReader(file));
+                    String zeile;
+
+                    while((zeile = br.readLine()) != null) {
+                        String[] temp = zeile.split( ";" );
+                        Geraet erfassung = new Geraet( temp[0], temp[1], temp[2], temp[3] );
+                        listeErfassungen.add( erfassung );
+                    }
+                    br.close();
+
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return listeErfassungen;
+    }
+
+    // gibt alle im Verzeichnis FBS befindlichen csv-Dateien ohne Suffix in Form eines String-Arrays zurück
     public static ArrayList<String> gibRaumListe() {
         ArrayList<String> raumliste = new ArrayList<>();
 
-        // für jede Datei im Verzeichnis FBS, hole dir den Dateinamen
-        // fügen den String zur Liste hinzu
-
+        for(File f : csvVerzeichnis.listFiles()) {
+            if(f.isFile() && f.getName().endsWith( ".csv" )) {
+                raumliste.add(f.getName().substring(0,f.getName().length() -4));
+                // Log.e("CSV", f.getName().substring(0,f.getName().length() -4));
+            }
+        }
         return raumliste;
     }
 }

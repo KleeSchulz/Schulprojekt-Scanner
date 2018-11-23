@@ -1,7 +1,5 @@
 package com.scanner.fbs_scanner.Standardklassen;
 
-import android.os.Environment;
-
 import java.util.ArrayList;
 
 // Jede Instanz dieser Klasse enthält die Informationen für ein Gerät
@@ -22,7 +20,9 @@ public class Geraet {
     }
 
     public String gibDateiFormat(){
-        return this.raumName.trim() + ";" + this.geraeteTyp + ";" + this.inventarnummer.trim() + ";" + this.notiz.trim() + "\n";
+        return this.raumName.trim().replace(";",",") + ";" + this.geraeteTyp +
+                ";" + this.inventarnummer.trim().replace(";",",") +
+                ";" + this.notiz.trim().replace(";",",") + "\n";
     }
 
     public String getRaumName() {

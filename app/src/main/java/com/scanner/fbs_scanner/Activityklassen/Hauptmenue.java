@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +16,10 @@ import android.widget.Toast;
 
 import com.scanner.fbs_scanner.Standardklassen.DateiHelper;
 import com.scanner.fbs_scanner.R;
+import com.scanner.fbs_scanner.Standardklassen.Geraet;
 import com.scanner.fbs_scanner.Standardklassen.TinyDB;
+
+import java.util.ArrayList;
 
 public class Hauptmenue extends AppCompatActivity {
 
@@ -72,7 +76,25 @@ public class Hauptmenue extends AppCompatActivity {
             }
         });
 
-        //==============================Prüfen ob Zwischenspeicher==========================================
+        // ********** TEST *************************************************************************
+        /*btn_anzeigen.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<Geraet> test = DateiHelper.leseDateiAus( "13" );
+                for(Geraet g : test) {
+                    Log.e("ErfassungCSV",g.gibDateiFormat());
+                }
+
+                // ---------------------------------------------------------------------------------
+
+                ArrayList<String> test2 = DateiHelper.gibRaumListe();
+                }
+            } );*/
+        // ********** TEST *************************************************************************
+
+
+
+        // prüft, ob sich Erfassungsdaten im Zwischenspeicher befinden
         /*if (tinyDB.getString("DATENTYP").length() > 0){
             final Context c = (Context) Hauptmenue.this; //Context Angeben  -> jeweilge Activity!
             AlertDialog.Builder builder = new AlertDialog.Builder(c);
