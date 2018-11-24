@@ -35,7 +35,7 @@ public final class DateiHelper{
     public static final String lesePermission= Manifest.permission.READ_EXTERNAL_STORAGE;
     public static final int STORAGE_REQUEST_CODE = 100;
     private static File rootVerzeichnis = Environment.getExternalStorageDirectory();
-    private static File csvVerzeichnis = new File(rootVerzeichnis.getAbsolutePath(),"/FBS");
+    private static File csvVerzeichnis = new File(rootVerzeichnis.getAbsolutePath(),"Download/FBS");
 
 
     // prüft, ob hardwareseitig Speicher zum Lesen und Schreiben verfügbar ist und setzt entsprechend die Variablen
@@ -107,6 +107,13 @@ public final class DateiHelper{
             if (externerSpeicherBeschreibbar) {
                 if (!csvVerzeichnis.exists()) {
                     csvVerzeichnis.mkdir();
+
+                    // stelle sicher, dass der Zugriff auf die erstellte Datei möglich ist
+                    // und sich das Filesystem aktualisiert
+                    csvVerzeichnis.setReadable( true );
+                    csvVerzeichnis.setWritable( true );
+                    csvVerzeichnis.setExecutable( true );
+                    MediaScannerConnection.scanFile(activityPlaceholder, new String[] {csvVerzeichnis.toString()}, null, null);
                 }
                 File datei = new File( csvVerzeichnis, dateiRaumName );
                 try {
@@ -116,7 +123,11 @@ public final class DateiHelper{
                     }
                     fos.flush();
                     fos.close();
-                    MediaScannerConnection.scanFile(activityPlaceholder, new String[] { datei.getName() }, null, null);
+
+                    datei.setReadable( true );
+                    datei.setWritable( true );
+                    datei.setExecutable( true );
+                    MediaScannerConnection.scanFile( activityPlaceholder, new String[]{datei.getPath()}, null,null );
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
