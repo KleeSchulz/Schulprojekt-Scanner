@@ -35,7 +35,7 @@ public final class DateiHelper{
     public static final String lesePermission= Manifest.permission.READ_EXTERNAL_STORAGE;
     public static final int STORAGE_REQUEST_CODE = 100;
     private static File rootVerzeichnis = Environment.getExternalStorageDirectory();
-    private static File csvVerzeichnis = new File(rootVerzeichnis.getAbsolutePath(),"Download/FBS");
+    private static File csvVerzeichnis = new File(rootVerzeichnis.getAbsolutePath(),"/FBS");
 
 
     // prüft, ob hardwareseitig Speicher zum Lesen und Schreiben verfügbar ist und setzt entsprechend die Variablen
