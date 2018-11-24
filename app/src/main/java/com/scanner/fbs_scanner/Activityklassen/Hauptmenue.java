@@ -88,6 +88,9 @@ public class Hauptmenue extends AppCompatActivity {
                 // ---------------------------------------------------------------------------------
 
                 ArrayList<String> test2 = DateiHelper.gibRaumListe();
+
+                // ---------------------------------------------------------------------------------
+                DateiHelper.loescheDatei( "100", Hauptmenue.this );
                 }
             } );*/
         // ********** TEST *************************************************************************

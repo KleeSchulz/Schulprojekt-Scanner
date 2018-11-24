@@ -3,9 +3,11 @@ package com.scanner.fbs_scanner.Standardklassen;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.MediaScannerConnection;
 import android.os.Build;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
@@ -108,12 +110,13 @@ public final class DateiHelper{
                 }
                 File datei = new File( csvVerzeichnis, dateiRaumName );
                 try {
-                    FileOutputStream fos = new FileOutputStream( datei, false );
+                    FileOutputStream fos = new FileOutputStream( datei, false);
                     for (Geraet geraet : Geraet.geraeteliste) {
                         fos.write( geraet.gibDateiFormat().getBytes() );
                     }
                     fos.flush();
                     fos.close();
+                    MediaScannerConnection.scanFile(activityPlaceholder, new String[] { datei.getName() }, null, null);
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -125,12 +128,12 @@ public final class DateiHelper{
 
     // gleicht den übergebenen Raumnamen (ohne .csv) mit den im Verzeichnis FBS befindlichen csv-Dateien
     // ab, bei Übereinstimmung wird die jeweilige Datei ausgelesen und in Form eines Geraete-Arrays zurückgegeben
-    public static ArrayList<Geraet> leseDateiAus(String ausgewaehlterRaum)
+    public static ArrayList<Geraet> leseDateiAus(String raumname)
     {
         ArrayList<Geraet> listeErfassungen = new ArrayList<>();
 
         for(File f : csvVerzeichnis.listFiles()){
-            if(f.getName().substring(0,f.getName().length() -4).equals(ausgewaehlterRaum)){
+            if(f.getName().substring(0,f.getName().length() -4).equals(raumname)){
                 File file = new File(csvVerzeichnis,f.getName());
                 try {
                     BufferedReader br = new BufferedReader(new FileReader(file));
@@ -164,5 +167,19 @@ public final class DateiHelper{
             }
         }
         return raumliste;
+    }
+
+    // löscht die Datei, die als Parameter in Form des reinen Raumanmens übergeben wird
+    public static void loescheDatei(String raumname, Activity activity){
+        boolean geloescht = false;
+        for(File f : csvVerzeichnis.listFiles()){
+            if(f.getName().substring(0,f.getName().length() -4).equals(raumname)){
+                geloescht = f.delete();
+            }
+            if(geloescht){
+                String message = "Datei '" + f.getName() + "' wurde gelöscht.";
+                Toast.makeText( activity, message,Toast.LENGTH_SHORT ).show();
+            }
+       }
     }
 }
