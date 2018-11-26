@@ -188,8 +188,8 @@ public final class DateiHelper{
                 geloescht = f.delete();
             }
             if(geloescht){
-                String message = "Datei '" + f.getName() + "' wurde gelöscht.";
-                Toast.makeText( activity, message,Toast.LENGTH_SHORT ).show();
+                String message = "Raum " + raumname + " wurde gelöscht.";
+                Toast.makeText( activity, message,Toast.LENGTH_LONG ).show();
             }
        }
     }

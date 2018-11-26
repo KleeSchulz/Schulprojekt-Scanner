@@ -29,7 +29,6 @@
     <string name="delte">Raum löschen</string>
 
 
-
     <string-array name="typen">
         <item>PC</item>
         <item>Monitor</item>

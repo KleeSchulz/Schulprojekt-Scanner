@@ -1,9 +1,11 @@
 package com.scanner.fbs_scanner.Activityklassen;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,6 +34,7 @@ public class Hauptmenue extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hauptmenue);
+
 
         // Zuweisungen
         btn_raumerfassen = findViewById(R.id.btn_erfassen);
@@ -76,24 +79,18 @@ public class Hauptmenue extends AppCompatActivity {
             }
         });
 
-        // ********** TEST *************************************************************************
-        /*btn_anzeigen.setOnClickListener( new View.OnClickListener() {
+
+        btn_anzeigen.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArrayList<Geraet> test = DateiHelper.leseDateiAus( "13" );
-                for(Geraet g : test) {
-                    Log.e("ErfassungCSV",g.gibDateiFormat());
+                if(DateiHelper.gibRaumListe().size() > 0)
+                    startActivity(new Intent(Hauptmenue.this, Anzeige.class));
+                else{
+                    Snackbar.make(findViewById(android.R.id.content), "Keine Räume zum Anzeigen vorhanden!", Snackbar.LENGTH_LONG).show();
                 }
+            }
+        }) ;
 
-                // ---------------------------------------------------------------------------------
-
-                ArrayList<String> test2 = DateiHelper.gibRaumListe();
-
-                // ---------------------------------------------------------------------------------
-                DateiHelper.loescheDatei( "100", Hauptmenue.this );
-                }
-            } );*/
-        // ********** TEST *************************************************************************
 
 
 
