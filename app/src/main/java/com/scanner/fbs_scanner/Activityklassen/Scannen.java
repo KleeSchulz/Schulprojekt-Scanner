@@ -2,8 +2,10 @@ package com.scanner.fbs_scanner.Activityklassen;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,6 +34,14 @@ public class Scannen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scannen);
+        Bundle b = getIntent().getExtras();
+        //Setzte Format
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //Setzte Titel
+        setTitle(getResources().getString(R.string.string_scannen) + b.get("KEY_RAUM"));
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.drawable.fbsklein);
 
         //todo: Spinner, Funktion zum Hinzufügen eines Typs implementieren
         // Zuweisungen
@@ -45,22 +55,10 @@ public class Scannen extends AppCompatActivity {
         tv_geraeteCounter = findViewById(R.id.tv_geraetecounter);
 
         // Übergabe des Raums
-        Bundle b = getIntent().getExtras();
         String raum = b.getString("KEY_RAUM");
         tv_raumname_anz.setText(raum);
 
-        /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        if (b.getBoolean("VOR")){
-            scanstring = tinyDB.getString("DATENTYP");
-            et_raumname.setText(tinyDB.getString("RAUMSAFE"));
-        }
-        else {
-            scanstring = "";
-        }
-        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
-        // hier erfolgt der Scanvorgang über den Barcodescanner
-        // das Ergebnis wird in der Methode onActivityResult entgegengenmommen
         btn_scannen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,14 +80,6 @@ public class Scannen extends AppCompatActivity {
                     Toast.makeText(Scannen.this, "Inventarnummer ist leer!", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    //Eintrag in die TinyDB/PrefKeys
-                     scanstring = et_raumname.getText().toString() + ";" + spin_typen.toString() + ";" + et_inventarnummer.getText().toString() + ";" + et_notiz.getText().toString() + "\n" + scanstring;
-                     tinyDB.putString("DATENTYP",scanstring);
-                    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-
-                    // erstellt ein Objekt der Klasse Geraet mit den Daten der Felder
-                    // ist das Notizfeld leer, wird "-" übergeben
                     Geraet geraet = new Geraet(
                             tv_raumname_anz.getText().toString(),
                             spin_typen.getSelectedItem().toString(),
@@ -137,11 +127,6 @@ public class Scannen extends AppCompatActivity {
                             } )
                             .create().show();
                 }
-                /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                tinyDB.getString("DATENTYP"); //-> Der String muss eingefügt werden
-                //Datenspeicher leer setzten
-                tinyDB.putString("DATENTYP","");
-                !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
             }
         });
     }
@@ -180,7 +165,6 @@ public class Scannen extends AppCompatActivity {
     // diese Methode muss in jeder Activity implementiert werden, in der die Permissions angefragt werden
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults ){
-
 
         if(requestCode == DateiHelper.STORAGE_REQUEST_CODE){
             if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){

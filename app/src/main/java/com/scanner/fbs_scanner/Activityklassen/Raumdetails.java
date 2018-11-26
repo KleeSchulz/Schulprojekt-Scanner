@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -27,10 +28,19 @@ public class Raumdetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_raumdetails );
+        Intent intent = getIntent();
+        //Setzte Format
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        //Setzte Titel
+        setTitle(getResources().getString(R.string.string_raumname ) + " " + intent.getStringExtra( "KEY_SELEKTIERTER_RAUM" ));
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.drawable.fbsklein);
+
+
         tv_raumdetails = findViewById(R.id.tableView);
 
-        Intent intent = getIntent();
+
         final String selektierterRaum = intent.getStringExtra( "KEY_SELEKTIERTER_RAUM" );
 
         erstelleTabelle();

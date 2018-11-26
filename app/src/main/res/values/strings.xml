@@ -16,6 +16,20 @@
     <string name="btn_hinzufuegen">Gerät hinzufügen</string>
     <string name="btn_erfassungsende">Raumerfassung abschließen</string>
 
+    <!-- Titelbars -->
+    <string name="string_Raumanzeige">Alle Räume</string>
+    <string name="string_scannen">Gerät erfassen für Raum: </string>
+    <string name="string_raumname">Raum: </string>
+
+    <!--Hauptmenü-->
+    <string name="hauptstring_raumerfassen">Raum erfassen</string>
+    <string name="hauptstring_raumnameeingabe">Bitte Raumnummer eingeben: </string>
+    <string name="hauptstring_raumscannen">Raum Scannen:</string>
+    <string name="hauptstring_raumleer">Der Raumname darf nicht leer sein</string>
+    <string name="string_abbrechen">Abbrechen</string>
+    <string name="hauptstring_keineraueme">Keine Räume zum Anzeigen vorhanden!</string>
+
+
 
     <!-- Dies muss noch geprüft werden (außer Array) -->
 

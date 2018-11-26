@@ -3,6 +3,7 @@ package com.scanner.fbs_scanner.Activityklassen;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +28,14 @@ public class Anzeige extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anzeige);
 
+        //Setzte Format
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //Setzte Titel
+        setTitle(getResources().getString(R.string.string_Raumanzeige));
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.drawable.fbsklein);
+        ;
         //todo: Wenn Datei extern hinzugefügt dann Absturz                      1
         // todo: AlertDialog und EditText, bei enter Tastatur schließen         1
         // todo: generell Layout und Schriftgrößen anpassen                     2
