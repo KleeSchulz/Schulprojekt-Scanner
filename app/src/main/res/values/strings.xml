@@ -16,6 +16,12 @@
     <string name="btn_hinzufuegen">Gerät hinzufügen</string>
     <string name="btn_erfassungsende">Raumerfassung abschließen</string>
 
+    <!--Allgemein -->
+    <string name="string_abbrechen">Abbrechen</string>
+    <string name="string_ja">Ja</string>
+    <string name="string_nein">Nein</string>
+
+
     <!-- Titelbars -->
     <string name="string_Raumanzeige">Alle Räume</string>
     <string name="string_scannen">Gerät erfassen für Raum: </string>
@@ -26,8 +32,27 @@
     <string name="hauptstring_raumnameeingabe">Bitte Raumnummer eingeben: </string>
     <string name="hauptstring_raumscannen">Raum Scannen:</string>
     <string name="hauptstring_raumleer">Der Raumname darf nicht leer sein</string>
-    <string name="string_abbrechen">Abbrechen</string>
     <string name="hauptstring_keineraueme">Keine Räume zum Anzeigen vorhanden!</string>
+
+    <!-- raumdetails -->
+    <string name="raumstring_raum">Raum </string>
+    <string name="raumstring_typ">Gerätetyp</string>
+    <string name="raumstring_inventarnummer">Inventarnummer</string>
+    <string name="raumstring_notiz">Notiz</string>
+
+    <!-- Anzeige -->
+    <string name="anz_aktion">Aktion wählen</string>
+
+    <!-- Scannen -->
+    <string name="scan_raumleer">Raum ist leer!</string>
+    <string name="scan_invleer">Inventarnummer ist leer!</string>
+    <string name="scan_add">Gerät hinzugefügt.</string>
+    <string name="scan_abbrechen">Erfassung abbrechen?</string>
+    <string name="scan_keinegeraete">Es wurden keine Geräte erfasst. Wollen Sie die Erfassung abbrechen?</string>
+    <string name="scan_datenloeschen">Erfassung abbrechen und Daten löschen?</string>
+    <string name="scan_berecher">Berechtigung erteilt.</string>
+    <string name="scan_dateierstellt">Datei wurde erstellt.</string>
+    <string name="scan_berechver">Berechtigung verweigert.</string>
 
 
 

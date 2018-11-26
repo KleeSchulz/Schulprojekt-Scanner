@@ -34,7 +34,7 @@ public class Hauptmenue extends AppCompatActivity {
     //Todo: ggf. Toastmessages generell durch Snackbars ersetzten (Snackbars optisch anpassen) Christian
     //Todo: Titelbar Zürückbutton Christian
     //Todo: 2 sprachige App (Englisch u. Deutsch)
-    //Todo: Strings.xml - alle hardkodierten Strings einfügen! // Hauptmenü fertig!
+    //Todo: Strings.xml - alle hardkodierten Strings einfügen! // Hauptmenüklasse, Raumdetailsklasse, Anzeigeklasse, Scannklasse fertig!
     //todo Logfiles Aktionen des Useres und Fehlermeldungen (ggf. als asynchronen Service implementieren) Christian!
 
     //todo: verschiedene ActivityStates beachten (z.B. onResume, onRestart, onPause etc. ) Christian

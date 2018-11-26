@@ -65,7 +65,7 @@ public class Anzeige extends AppCompatActivity {
    @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu( menu, v, menuInfo );
-        menu.setHeaderTitle( "Aktion wählen" );
+        menu.setHeaderTitle(getResources().getString(R.string.anz_aktion));
         getMenuInflater().inflate( R.menu.activity_anzeige_context_menu,menu );
 
     }
@@ -79,7 +79,6 @@ public class Anzeige extends AppCompatActivity {
                 String zuLoeschenderRaum = DateiHelper.gibRaumListe().get(listPosition);
                 DateiHelper.loescheDatei( zuLoeschenderRaum, Anzeige.this );
                 ladeRaeume();
-                //Toast.makeText( Anzeige.this, "Raum " + zuLoeschenderRaum + " wurde gelöscht.", Toast.LENGTH_LONG ).show();
                 return true;
             default:
                 return super.onContextItemSelected( item );

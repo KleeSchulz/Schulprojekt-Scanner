@@ -81,7 +81,7 @@ public class Raumdetails extends AppCompatActivity {
         tv_raumdetails.setColumnModel( columnModel );
 
         // Setzen des Tabellenkopfes
-        final String[] spaltennamen = { "Raum", "Gerätetyp", "Inventarnummer", "Notiz" };
+        final String[] spaltennamen = { getResources().getString(R.string.raumstring_raum), getResources().getString(R.string.raumstring_typ),getResources().getString(R.string.raumstring_inventarnummer) };
         tv_raumdetails.setHeaderAdapter(new SimpleTableHeaderAdapter(Raumdetails.this, spaltennamen));
 
         // Aktivieren von SwipeToRefresh-Funktion
