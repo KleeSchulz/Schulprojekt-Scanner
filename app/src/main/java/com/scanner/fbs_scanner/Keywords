@@ -2,6 +2,7 @@
 || Bundle- bzw. Intentkeys ||
 *****************************
 KEY_RAUM = liefert den im AlertDialog eingegebenen Raumnamen an die Scannenactivity
+// Todo: Keys eintragen und beachten, dass Konvention eingehalten wird (KEY_???), alte Keys löschen Sebastian Schulz
 
 
 

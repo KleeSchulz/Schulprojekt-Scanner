@@ -22,6 +22,9 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 // Diese Klasse ermöglicht diverse Dateioperationen
 public final class DateiHelper{
@@ -176,6 +179,7 @@ public final class DateiHelper{
                 raumliste.add(f.getName().substring(0,f.getName().length() -4));
                 // Log.e("CSV", f.getName().substring(0,f.getName().length() -4));
             }
+            Collections.sort(raumliste); // Todo: Raumsotierung
         }
         return raumliste;
     }

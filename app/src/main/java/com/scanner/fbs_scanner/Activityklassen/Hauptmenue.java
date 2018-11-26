@@ -24,11 +24,27 @@ import com.scanner.fbs_scanner.Standardklassen.TinyDB;
 import java.util.ArrayList;
 
 public class Hauptmenue extends AppCompatActivity {
+    //Todo: Anpassen Vertikal überall außer Raumdetails! Sebastian      1
+    //Todo: Responsive Layout für alle Handys! Sebastian                1
+    //Todo: Logo Hauptmenü evtl. Hauptmenühintergrund weiß, AppIcon Sebastian       1
+    //Todo: Kommentare Löschen von TindyDB Sebastian                    6
+    //Todo: Alle Funktionen Testen Bugs beseitigen Sebastian            1
+    //Todo: APK-Datei erzeugen! Sebastian                               1
+    //Todo: ggf. Toastmessages generell durch Snackbars ersetzten (Snackbars optisch anpassen) Christian
+    //Todo: Titeltext bei jeder Activity ändern anstatt FBS-Scanner + Minifbslogo bei jeder Activity
+    //Todo: Titelbar Zürückbutton Christian
+    //Todo: 2 sprachige App (Englisch u. Deutsch)
+    //Todo: Strings.xml - alle hardkodierten Strings einfügen!
+    //todo Logfiles Aktionen des Useres und Fehlermeldungen (ggf. als asynchronen Service implementieren) Christian!
+
+    //todo: verschiedene ActivityStates beachten (z.B. onResume, onRestart, onPause etc. ) Christian
+    //todo: bei Klicken auf FBS-Logo wird die FBS-Homepage angezeigt
+    
+
 
     Button btn_raumerfassen;
     Button btn_anzeigen;
 
-    //public static TinyDB tinyDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +56,6 @@ public class Hauptmenue extends AppCompatActivity {
         btn_raumerfassen = findViewById(R.id.btn_erfassen);
         btn_anzeigen = findViewById(R.id.btn_anzeigen);
 
-        //tinyDB = new TinyDB(this);
 
         /* bei Drücken des Buttons btn_raumerfassen wird ein Eingabefeld für den Raumnamen
            angezeigt und dessen Inhalt validiert */
@@ -90,45 +105,5 @@ public class Hauptmenue extends AppCompatActivity {
                 }
             }
         }) ;
-
-
-
-
-        // prüft, ob sich Erfassungsdaten im Zwischenspeicher befinden
-        /*if (tinyDB.getString("DATENTYP").length() > 0){
-            final Context c = (Context) Hauptmenue.this; //Context Angeben  -> jeweilge Activity!
-            AlertDialog.Builder builder = new AlertDialog.Builder(c);
-            builder.setTitle("Gespeicherte Daten");
-            builder.setMessage("Es befinden sich noch Raumdaten im Zwischenspeicher! Scanvorgang fortsetzen?");
-            builder.setPositiveButton("JA", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Intent intent = new Intent(Hauptmenue.this, Scannen.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putBoolean("VOR", true);
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-                }
-            });
-            builder.setNegativeButton("Abbrechen", null);
-            AlertDialog dialog = builder.create();
-            dialog.show();*/
-
-        }
-
-
-
-//===Danach löschen ggf. andere klasse=======TESTEN=================================================
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 }

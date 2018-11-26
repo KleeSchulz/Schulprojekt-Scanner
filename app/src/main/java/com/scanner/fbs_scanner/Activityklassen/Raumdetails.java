@@ -2,6 +2,7 @@ package com.scanner.fbs_scanner.Activityklassen;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,7 +27,7 @@ public class Raumdetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_raumdetails );
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         tv_raumdetails = findViewById(R.id.tableView);
 
         Intent intent = getIntent();
@@ -46,9 +47,13 @@ public class Raumdetails extends AppCompatActivity {
 
 
 
-        // TODO: Sortierung implementieren (sowohl bei Anzeige- als auch bei Raumdetails-Activity)
+        // TODO: Sortierung implementieren (sowohl bei Anzeige- als auch bei Raumdetails-Activity) Christian
 
+        // TODO: E-Mail versenden-Funktion im Contextmenü (Anzeige) hinzufügen
 
+        // TODO: Bearbeiten der Liste ermöglichen
+
+        // TODO: Raumanzeige im Header, dafür aus der Tabelle entfernen
 
 
 
@@ -59,14 +64,14 @@ public class Raumdetails extends AppCompatActivity {
     private void erstelleTabelle(){
         // Setzen der Spaltenbreite
         TableColumnPxWidthModel columnModel = new TableColumnPxWidthModel(4, 350);
-        columnModel.setColumnWidth(0, 165);
-        columnModel.setColumnWidth(1, 250);
-        columnModel.setColumnWidth(2, 270);
-        columnModel.setColumnWidth(3, 400);
+        columnModel.setColumnWidth(0,300);
+        columnModel.setColumnWidth(1, 300);
+        columnModel.setColumnWidth(2, 450);
+        columnModel.setColumnWidth(3, 500);
         tv_raumdetails.setColumnModel( columnModel );
 
         // Setzen des Tabellenkopfes
-        final String[] spaltennamen = { "Raum", "Gerätetyp", "InventarNr", "Notiz" };
+        final String[] spaltennamen = { "Raum", "Gerätetyp", "Inventarnummer", "Notiz" };
         tv_raumdetails.setHeaderAdapter(new SimpleTableHeaderAdapter(Raumdetails.this, spaltennamen));
 
         // Aktivieren von SwipeToRefresh-Funktion

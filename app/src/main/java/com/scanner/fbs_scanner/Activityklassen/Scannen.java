@@ -33,6 +33,7 @@ public class Scannen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scannen);
 
+        //todo: Spinner, Funktion zum Hinzufügen eines Typs implementieren
         // Zuweisungen
         et_inventarnummer = findViewById(R.id.et_inventarnummer);
         tv_raumname_anz = findViewById(R.id.tv_raumname_anz);
@@ -63,6 +64,7 @@ public class Scannen extends AppCompatActivity {
         btn_scannen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 IntentIntegrator integrator = new IntentIntegrator(Scannen.this);
                 integrator.initiateScan();
             }

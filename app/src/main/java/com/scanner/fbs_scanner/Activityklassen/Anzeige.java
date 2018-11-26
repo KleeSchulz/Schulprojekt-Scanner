@@ -2,6 +2,7 @@ package com.scanner.fbs_scanner.Activityklassen;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,12 +27,14 @@ public class Anzeige extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anzeige);
 
+        //todo: Wenn Datei extern hinzugefügt dann Absturz                      1
+        // todo: AlertDialog und EditText, bei enter Tastatur schließen         1
+        // todo: generell Layout und Schriftgrößen anpassen                     2
         // Zuweisungen
         lv_raeume = findViewById( R.id.lv_raeume );
 
         // Aktivieren der Contextmenü-Funktion
         registerForContextMenu( lv_raeume );
-
         ladeRaeume();
 
         // bei Anklicken eines Items gelangt man in die Detailansicht
@@ -44,7 +47,8 @@ public class Anzeige extends AppCompatActivity {
             }
         } );
 
-        // TODO: SWIPE TO REFRESH - Funktion für ListView implementieren!
+        // TODO: SWIPE TO REFRESH - Funktion für ListView implementieren! Christian 1
+        //Todo: Listview Oben anfagen anzeigen! Christian   3
     }
 
 

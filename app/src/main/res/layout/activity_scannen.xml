@@ -69,6 +69,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_hinzufuegen" />
 
+    <!-- Todo: Spinner anpassen Größe u. Breite -->
     <Spinner
         android:id="@+id/spin_typen"
         android:layout_width="0dp"
@@ -121,6 +122,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
+        android:background="@color/statusbar"
         android:text="@string/btn_scan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
