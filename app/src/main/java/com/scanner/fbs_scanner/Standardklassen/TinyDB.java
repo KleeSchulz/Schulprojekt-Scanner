@@ -20,11 +20,22 @@ import android.util.Log;
 public class TinyDB {
 
     private SharedPreferences preferences;
+    SharedPreferences.Editor prefeditor = preferences.edit();
     private String DEFAULT_APP_IMAGEDATA_DIRECTORY;
     private String lastImagePath = "";
     public TinyDB(Context appContext) {
         preferences = PreferenceManager.getDefaultSharedPreferences(appContext);
     }
+
+//Hinzugefügt über SharedPrefernces wegen Standardwert**********************************************
+    public boolean gebeStandardBoolean(String key, boolean value) {
+        return preferences.getBoolean(key,value);
+    }
+
+    public void setzeStandardBoolean(String key,boolean value){
+        prefeditor.putBoolean(key,value);
+    }
+//Hinzugefügt beendet*******************************************************************************
     /**
      * Decodes the Bitmap from 'path' and returns it
      * @param path image path

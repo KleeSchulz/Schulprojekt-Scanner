@@ -54,7 +54,11 @@
     <string name="scan_dateierstellt">Datei wurde erstellt.</string>
     <string name="scan_berechver">Berechtigung verweigert.</string>
 
-
+<!-- Standardwerte für Array -->
+    <string name="pc">PC</string>
+    <string name="drucker">Drucker</string>
+    <string name="monitor">Monitor</string>
+    <string name="beamer">Beamer</string>
 
     <!-- Dies muss noch geprüft werden (außer Array) -->
 
@@ -67,7 +71,7 @@
     <string name="add">Hinzufügen</string>
     <string name="delte">Raum löschen</string>
 
-
+<!-- Löschen wenn Array eingelsen wird-->
     <string-array name="typen">
         <item>PC</item>
         <item>Monitor</item>

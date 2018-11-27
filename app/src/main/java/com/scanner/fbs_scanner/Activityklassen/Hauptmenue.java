@@ -23,6 +23,7 @@ import com.scanner.fbs_scanner.Standardklassen.DateiHelper;
 import com.scanner.fbs_scanner.R;
 import com.scanner.fbs_scanner.Standardklassen.Geraet;
 import com.scanner.fbs_scanner.Standardklassen.TinyDB;
+import com.scanner.fbs_scanner.Standardklassen.TinyDBHelper;
 
 import java.util.ArrayList;
 
@@ -42,7 +43,6 @@ public class Hauptmenue extends AppCompatActivity {
     //todo: verschiedene ActivityStates beachten (z.B. onResume, onRestart, onPause etc. ) Christian
 
 
-
     Button btn_raumerfassen;
     Button btn_anzeigen;
     ImageButton homepage;
@@ -60,6 +60,7 @@ public class Hauptmenue extends AppCompatActivity {
         btn_raumerfassen = findViewById(R.id.btn_erfassen);
         btn_anzeigen = findViewById(R.id.btn_anzeigen);
         homepage = findViewById(R.id.ibtn_logo);
+
 
         /* bei Drücken des Buttons btn_raumerfassen wird ein Eingabefeld für den Raumnamen
            angezeigt und dessen Inhalt validiert */

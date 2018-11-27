@@ -54,6 +54,8 @@ public class Scannen extends AppCompatActivity {
         btn_erfassungsende = findViewById(R.id.btn_erfassungsende);
         tv_geraeteCounter = findViewById(R.id.tv_geraetecounter);
 
+
+
         // Übergabe des Raums
         String raum = b.getString("KEY_RAUM");
         tv_raumname_anz.setText(raum);
