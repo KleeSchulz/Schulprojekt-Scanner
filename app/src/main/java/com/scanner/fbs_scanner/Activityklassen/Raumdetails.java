@@ -84,12 +84,12 @@ public class Raumdetails extends AppCompatActivity {
     // Laden und Anzeigen der Daten
     private void ladeDaten(String raum){
         ArrayList<Geraet> geraeteListe = DateiHelper.leseDateiAus(raum);
-        String [][] tabellendaten = new String[geraeteListe.size()][3];
+        String [][] tabellendaten = new String[geraeteListe.size()][4];
 
         for(int i = 0; i < geraeteListe.size(); i++){
-            tabellendaten[i][1] = geraeteListe.get(i).getGeraeteTyp();
-            tabellendaten[i][2] = geraeteListe.get(i).getInventarnummer();
-            tabellendaten[i][3] = geraeteListe.get(i).getNotiz();
+            tabellendaten[i][0] = geraeteListe.get(i).getGeraeteTyp();
+            tabellendaten[i][1] = geraeteListe.get(i).getInventarnummer();
+            tabellendaten[i][2] = geraeteListe.get(i).getNotiz();
         }
         tv_raumdetails.setDataAdapter(new SimpleTableDataAdapter(Raumdetails.this, tabellendaten));
     }

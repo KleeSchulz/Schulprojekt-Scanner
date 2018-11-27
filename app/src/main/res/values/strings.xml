@@ -94,4 +94,12 @@
 
     <!--••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• -->
 
+    <!-- TinyDBHelper (Klasse) -->
+    <string name="pc">PC</string>
+    <string name="monitor">Monitor</string>
+    <string name="drucker">Drucker</string>
+    <string name="beamer">Beamer</string>
+
+    <!--••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• -->
+
 </resources>
