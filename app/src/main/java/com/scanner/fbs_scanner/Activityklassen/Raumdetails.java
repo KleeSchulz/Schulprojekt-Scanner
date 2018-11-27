@@ -23,23 +23,29 @@ import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 
 public class Raumdetails extends AppCompatActivity {
 
+    // TODO: Sortierung implementieren (sowohl bei Anzeige- als auch bei Raumdetails-Activity) Christian
+    // TODO: E-Mail versenden-Funktion im Contextmenü (Anzeige) hinzufügen
+    // TODO: Bearbeiten der Liste ermöglichen
+    // TODO: Raumanzeige im Header, dafür aus der Tabelle entfernen
+
     TableView<String[]> tv_raumdetails;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_raumdetails );
         Intent intent = getIntent();
-        //Setzte Format
+
+        //Setze Ausrichtung
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        //Setzte Titel
-        setTitle(getResources().getString(R.string.string_raumname ) + " " + intent.getStringExtra( "KEY_SELEKTIERTER_RAUM" ));
+
+        //Setze Titel
+        setTitle(getResources().getString(R.string.titelstring_raumdetails) + " " + intent.getStringExtra( "KEY_SELEKTIERTER_RAUM" ));
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.drawable.fbsklein);
 
-
+        // Zuweisungen
         tv_raumdetails = findViewById(R.id.tableView);
-
 
         final String selektierterRaum = intent.getStringExtra( "KEY_SELEKTIERTER_RAUM" );
 
@@ -54,34 +60,21 @@ public class Raumdetails extends AppCompatActivity {
                 refreshIndicator.hide();
             }
         } );
-
-
-
-        // TODO: Sortierung implementieren (sowohl bei Anzeige- als auch bei Raumdetails-Activity) Christian
-
-        // TODO: E-Mail versenden-Funktion im Contextmenü (Anzeige) hinzufügen
-
-        // TODO: Bearbeiten der Liste ermöglichen
-
-        // TODO: Raumanzeige im Header, dafür aus der Tabelle entfernen
-
-
-
     }
 
     // erstellt die Tabelle im Hinblick auf Spaltenbreite, Tabellenkopfdaten und SwipeToRefresh
     // das Setzen der Farben erfolgt über die xml-Datei
     private void erstelleTabelle(){
         // Setzen der Spaltenbreite
-        TableColumnPxWidthModel columnModel = new TableColumnPxWidthModel(4, 350);
+        TableColumnPxWidthModel columnModel = new TableColumnPxWidthModel(3, 350);
         columnModel.setColumnWidth(0,300);
-        columnModel.setColumnWidth(1, 300);
-        columnModel.setColumnWidth(2, 450);
-        columnModel.setColumnWidth(3, 500);
+        columnModel.setColumnWidth(1, 450);
+        columnModel.setColumnWidth(2, 800);
+
         tv_raumdetails.setColumnModel( columnModel );
 
         // Setzen des Tabellenkopfes
-        final String[] spaltennamen = { getResources().getString(R.string.raumstring_raum), getResources().getString(R.string.raumstring_typ),getResources().getString(R.string.raumstring_inventarnummer) };
+        final String[] spaltennamen = { getResources().getString(R.string.raumstring_typ),getResources().getString(R.string.raumstring_inventarnummer), getResources().getString(R.string.raumstring_notiz ) };
         tv_raumdetails.setHeaderAdapter(new SimpleTableHeaderAdapter(Raumdetails.this, spaltennamen));
 
         // Aktivieren von SwipeToRefresh-Funktion
@@ -90,12 +83,10 @@ public class Raumdetails extends AppCompatActivity {
 
     // Laden und Anzeigen der Daten
     private void ladeDaten(String raum){
-
         ArrayList<Geraet> geraeteListe = DateiHelper.leseDateiAus(raum);
-        String [][] tabellendaten = new String[geraeteListe.size()][4];
+        String [][] tabellendaten = new String[geraeteListe.size()][3];
 
         for(int i = 0; i < geraeteListe.size(); i++){
-            tabellendaten[i][0] = geraeteListe.get(i).getRaumName();
             tabellendaten[i][1] = geraeteListe.get(i).getGeraeteTyp();
             tabellendaten[i][2] = geraeteListe.get(i).getInventarnummer();
             tabellendaten[i][3] = geraeteListe.get(i).getNotiz();

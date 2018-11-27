@@ -13,7 +13,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/tv_raumname"
+        android:text="@string/scan_tv_raumname"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:text="@string/tv_typ"
+        android:text="@string/scan_tv_typ"
         app:layout_constraintBaseline_toBaselineOf="@+id/spin_typen"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:text="@string/tv_inventarnummer"
+        android:text="@string/scan_tv_inventarnummer"
         app:layout_constraintBaseline_toBaselineOf="@+id/et_inventarnummer"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:text="@string/tv_notiz"
+        android:text="@string/scan_tv_notiz"
         app:layout_constraintBaseline_toBaselineOf="@+id/et_notiz"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -89,7 +89,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="@string/et_inventarnummer_hint"
+        android:hint="@string/scan_et_inventarnummer_hint"
         android:imeOptions="actionDone"
         android:inputType="text"
         android:maxLines="1"
@@ -104,7 +104,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="@string/et_notiz_hint"
+        android:hint="@string/scan_et_notiz_hint"
         android:imeOptions="actionDone"
         android:inputType="textMultiLine"
         android:maxLength="70"
@@ -123,7 +123,7 @@
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
         android:background="@color/statusbar"
-        android:text="@string/btn_scan"
+        android:text="@string/scan_btn_scan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -138,7 +138,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text="@string/btn_hinzufuegen"
+        android:text="@string/scan_btn_hinzufuegen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -153,7 +153,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="80dp"
-        android:text="@string/btn_erfassungsende"
+        android:text="@string/scan_btn_erfassungsende"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

@@ -19,6 +19,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.scanner.fbs_scanner.R;
+
 /**
  * <p>A utility class which helps ease integration with Barcode Scanner via {@link Intent}s. This is a simple
  * way to invoke barcode scanning and receive the result, without any need to integrate, modify, or learn the
@@ -96,11 +98,10 @@ public class IntentIntegrator {
     public static final int REQUEST_CODE = 0x0000c0de; // Only use bottom 16 bits
     private static final String TAG = IntentIntegrator.class.getSimpleName();
 
-    public static final String DEFAULT_TITLE = "Barcode-Scanner installieren?";
-    public static final String DEFAULT_MESSAGE =
-            "Diese App erfordert einen Barcode-Scanner. Möchten Sie diesen installieren?";
-    public static final String DEFAULT_YES = "Ja";
-    public static final String DEFAULT_NO = "Nein";
+    public static final String DEFAULT_TITLE = App.getContext().getResources().getString(R.string.scanner_installieren);
+    public static final String DEFAULT_MESSAGE = App.getContext().getResources().getString(R.string.scanner_message);
+    public static final String DEFAULT_YES = App.getContext().getResources().getString(R.string.string_ja);
+    public static final String DEFAULT_NO = App.getContext().getResources().getString(R.string.string_nein);
 
     private static final String BS_PACKAGE = "com.google.zxing.client.android";
     private static final String BSPLUS_PACKAGE = "com.srowen.bs.android";

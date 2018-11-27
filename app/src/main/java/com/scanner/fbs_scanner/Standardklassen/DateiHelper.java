@@ -15,6 +15,8 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Toast;
 import com.scanner.fbs_scanner.Activityklassen.Hauptmenue;
+import com.scanner.fbs_scanner.R;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -69,15 +71,15 @@ public final class DateiHelper{
 
                 if(ActivityCompat.shouldShowRequestPermissionRationale(activityPlaceholder, schreibPermission)) {
                     new AlertDialog.Builder( activityPlaceholder )
-                            .setTitle("Lese- und Schreibberechtigung erforderlich")
-                            .setMessage("Zum Abrufen und Abspeichern der erfassten Daten wird eine Lese- und Schreibberechtigung benötigt." )
-                            .setPositiveButton( "OK", new DialogInterface.OnClickListener() {
+                            .setTitle(App.getContext().getResources().getString(R.string.dateihelper_berechtigung))
+                            .setMessage(App.getContext().getResources().getString(R.string.dateihelper_berechtigung_message) )
+                            .setPositiveButton(App.getContext().getResources().getString(R.string.string_ok), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     ActivityCompat.requestPermissions( activityPlaceholder, new String[]{lesePermission,schreibPermission}, STORAGE_REQUEST_CODE);
                                 }
                             } )
-                            .setNegativeButton( "Abbrechen", new DialogInterface.OnClickListener() {
+                            .setNegativeButton( App.getContext().getResources().getString(R.string.string_abbrechen), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     dialog.dismiss();
@@ -93,7 +95,7 @@ public final class DateiHelper{
             // Methode, deswegen müssen an dieser Stelle die sonst üblichen Operationen durchgeführt werden!
             else {
                 erzeugeUndBeschreibeDatei();
-                Toast.makeText(activityPlaceholder, "Datei wurde erstellt.",Toast.LENGTH_LONG).show();
+                Toast.makeText(activityPlaceholder, App.getContext().getResources().getString(R.string.scan_dateierstellt),Toast.LENGTH_LONG).show();
                 Geraet.geraeteliste.clear();
                 activityPlaceholder.startActivity(new Intent(activityPlaceholder, Hauptmenue.class));
             }
@@ -177,9 +179,8 @@ public final class DateiHelper{
         for(File f : csvVerzeichnis.listFiles()) {
             if(f.isFile() && f.getName().endsWith( ".csv" )) {
                 raumliste.add(f.getName().substring(0,f.getName().length() -4));
-                // Log.e("CSV", f.getName().substring(0,f.getName().length() -4));
             }
-            Collections.sort(raumliste); // Todo: Raumsotierung
+            //Collections.sort(raumliste); // Todo: Raumsortierung
         }
         return raumliste;
     }
@@ -192,7 +193,7 @@ public final class DateiHelper{
                 geloescht = f.delete();
             }
             if(geloescht){
-                String message = "Raum " + raumname + " wurde gelöscht.";
+                String message = App.getContext().getResources().getString(R.string.dateihelper_msg_raumlöschen_1) + raumname + App.getContext().getResources().getString(R.string.dateihelper_msg_raumlöschen_2);
                 Toast.makeText( activity, message,Toast.LENGTH_LONG ).show();
             }
        }

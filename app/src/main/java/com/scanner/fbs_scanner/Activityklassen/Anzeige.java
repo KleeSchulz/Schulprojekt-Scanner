@@ -28,21 +28,25 @@ public class Anzeige extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anzeige);
 
-        //Setzte Format
+        // Setze Ausrichtung
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        //Setzte Titel
-        setTitle(getResources().getString(R.string.string_Raumanzeige));
+
+        // Setze Titel
+        setTitle(getResources().getString(R.string.titelstring_Anzeige));
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.drawable.fbsklein);
-        ;
-        //todo: Wenn Datei extern hinzugefügt dann Absturz                      1
+
+        // todo: Wenn Datei extern hinzugefügt dann Absturz                      1
         // todo: AlertDialog und EditText, bei enter Tastatur schließen         1
         // todo: generell Layout und Schriftgrößen anpassen                     2
+        // TODO: SWIPE TO REFRESH - Funktion für ListView implementieren! Christian 1
+        // Todo: Listview Oben anfagen anzeigen! Christian   3
+
         // Zuweisungen
         lv_raeume = findViewById( R.id.lv_raeume );
 
-        // Aktivieren der Contextmenü-Funktion
+        // Aktivieren der Contextmenü-Funktion und Laden der Daten
         registerForContextMenu( lv_raeume );
         ladeRaeume();
 
@@ -55,21 +59,18 @@ public class Anzeige extends AppCompatActivity {
                 startActivity(intentDetails);
             }
         } );
-
-        // TODO: SWIPE TO REFRESH - Funktion für ListView implementieren! Christian 1
-        //Todo: Listview Oben anfagen anzeigen! Christian   3
     }
 
-
-
+    // bei einem LongClick auf ein Listitem öffnet sich ein Kontextmenü
    @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu( menu, v, menuInfo );
         menu.setHeaderTitle(getResources().getString(R.string.anz_aktion));
         getMenuInflater().inflate( R.menu.activity_anzeige_context_menu,menu );
-
     }
 
+    // beim Auswählen von Löschen wird der jeweilige Raum im Verzeichnis gelöscht
+    // anschließend werden die Daten neu geladen
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         switch(item.getItemId()){
@@ -86,7 +87,7 @@ public class Anzeige extends AppCompatActivity {
     }
 
     // legt einen Array-Adapter an und befüllt die ListView mit einem Array, welches die bisher
-    // erfassten Räume anzeigt
+    // erfassten Räume beinhaltet
     private void ladeRaeume(){
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.activity_anzeige_listview_item, DateiHelper.gibRaumListe());
         lv_raeume.setAdapter(arrayAdapter);
@@ -94,6 +95,5 @@ public class Anzeige extends AppCompatActivity {
         if(arrayAdapter.getCount() < 1){
             startActivity(new Intent(Anzeige.this, Hauptmenue.class) );
         }
-
     }
 }

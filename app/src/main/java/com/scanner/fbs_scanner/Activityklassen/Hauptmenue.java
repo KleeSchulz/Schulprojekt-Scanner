@@ -39,31 +39,28 @@ public class Hauptmenue extends AppCompatActivity {
     //Todo: 2 sprachige App (Englisch u. Deutsch)
     //Todo: Strings.xml - alle hardkodierten Strings einfügen! // Hauptmenüklasse, Raumdetailsklasse, Anzeigeklasse, Scannklasse fertig!
     //todo Logfiles Aktionen des Useres und Fehlermeldungen (ggf. als asynchronen Service implementieren) Christian!
-
     //todo: verschiedene ActivityStates beachten (z.B. onResume, onRestart, onPause etc. ) Christian
 
 
     Button btn_raumerfassen;
     Button btn_anzeigen;
-    ImageButton homepage;
+    ImageButton ib_homepage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hauptmenue);
 
-
-        //Setzte Format
+        //Setze Ausrichtung
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         // Zuweisungen
         btn_raumerfassen = findViewById(R.id.btn_erfassen);
         btn_anzeigen = findViewById(R.id.btn_anzeigen);
-        homepage = findViewById(R.id.ibtn_logo);
+        ib_homepage = findViewById(R.id.ibtn_logo);
 
-
-        /* bei Drücken des Buttons btn_raumerfassen wird ein Eingabefeld für den Raumnamen
-           angezeigt und dessen Inhalt validiert */
+        // bei Drücken des Buttons btn_raumerfassen wird ein Eingabefeld für den Raumnamen
+        // angezeigt und dessen Inhalt validiert
         btn_raumerfassen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +81,7 @@ public class Hauptmenue extends AppCompatActivity {
                             intent.putExtras(bundle);
                             startActivity(intent);
                         }
-                        else {
+                        else{
                             Toast.makeText(Hauptmenue.this, getResources().getString(R.string.hauptstring_raumleer), Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -95,6 +92,8 @@ public class Hauptmenue extends AppCompatActivity {
             }
         });
 
+        // bei Drücken des Buttons btn_anzeigen wird die Anzeigeactivity gestartet, sofern
+        // bereits Räume erfasst wurden
         btn_anzeigen.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,14 +105,13 @@ public class Hauptmenue extends AppCompatActivity {
             }
         }) ;
 
-        //Öffnet die Homepage im Browser
-        homepage.setOnClickListener(new View.OnClickListener() {
+        // Öffnet die FBS-Homepage im Browser
+        ib_homepage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.ferdinand-braun-schule.de/blog/category/news/"));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getResources().getString(R.string.hauptstring_link_FBS)));
                 startActivity(intent);
             }
         });
-
     }
 }

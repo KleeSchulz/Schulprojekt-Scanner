@@ -1,51 +1,47 @@
 <resources>
+
+    <!--••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• -->
+
+    <!-- Allgemein -->
     <string name="app_name">FBS-Scanner</string>
-    <string name="btn_erfassen">Raum erfassen</string>
-    <string name="btn_anzeigen">Räume anzeigen</string>
-
-    <string name="tv_raumname">Raumname:</string>
-    <string name="tv_typ">Gerätetyp:</string>
-    <string name="tv_inventarnummer">Inventarnummer:</string>
-    <string name="tv_notiz">Notiz:</string>
-    <string name="tv_geraetecounter">Erfasste Geräte: %1$s</string>
-
-    <string name="et_raumname_hint">Raumname eingeben...</string>
-    <string name="et_inventarnummer_hint">Letzter Scan...</string>
-    <string name="et_notiz_hint">Bemerkung ... (optional)</string>
-    <string name="btn_scan">Scannen</string>
-    <string name="btn_hinzufuegen">Gerät hinzufügen</string>
-    <string name="btn_erfassungsende">Raumerfassung abschließen</string>
-
-    <!--Allgemein -->
     <string name="string_abbrechen">Abbrechen</string>
+    <string name="string_loeschen">Löschen</string>
     <string name="string_ja">Ja</string>
     <string name="string_nein">Nein</string>
+    <string name="string_ok">OK</string>
 
+    <!--••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• -->
 
     <!-- Titelbars -->
-    <string name="string_Raumanzeige">Alle Räume</string>
-    <string name="string_scannen">Gerät erfassen für Raum: </string>
-    <string name="string_raumname">Raum: </string>
+    <string name="titelstring_Anzeige">Erfasste Räume</string>
+    <string name="titelstring_Scannen">Geräte erfassen für Raum: </string>
+    <string name="titelstring_raumdetails">Raum: </string>
 
-    <!--Hauptmenü-->
+    <!--••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• -->
+
+    <!-- Hauptmenü (Klasse) -->
     <string name="hauptstring_raumerfassen">Raum erfassen</string>
-    <string name="hauptstring_raumnameeingabe">Bitte Raumnummer eingeben: </string>
-    <string name="hauptstring_raumscannen">Raum Scannen:</string>
-    <string name="hauptstring_raumleer">Der Raumname darf nicht leer sein</string>
+    <string name="hauptstring_raumnameeingabe">Bitte Raumnamen eingeben:</string>
+    <string name="hauptstring_raumscannen">Raum erfassen</string>
+    <string name="hauptstring_raumleer">Der Raumname darf nicht leer sein!</string>
     <string name="hauptstring_keineraueme">Keine Räume zum Anzeigen vorhanden!</string>
+    <string name="hauptstring_link_FBS">https://www.ferdinand-braun-schule.de/blog/category/news/</string>
 
-    <!-- raumdetails -->
-    <string name="raumstring_raum">Raum </string>
-    <string name="raumstring_typ">Gerätetyp</string>
-    <string name="raumstring_inventarnummer">Inventarnummer</string>
-    <string name="raumstring_notiz">Notiz</string>
+    <!-- Hauptmenü (XML) -->
+    <string name="hauptstring_btn_erfassen">Raum erfassen</string>
+    <string name="hauptstring_btn_anzeigen">Räume anzeigen</string>
 
-    <!-- Anzeige -->
+    <!--••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• -->
+
+    <!-- Anzeige (Klasse) -->
     <string name="anz_aktion">Aktion wählen</string>
 
-    <!-- Scannen -->
+    <!--••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• -->
+
+    <!-- Scannen (Klasse) -->
     <string name="scan_raumleer">Raum ist leer!</string>
     <string name="scan_invleer">Inventarnummer ist leer!</string>
+    <string name="scan_tv_geraetecounter">Erfasste Geräte: %1$s</string>
     <string name="scan_add">Gerät hinzugefügt.</string>
     <string name="scan_abbrechen">Erfassung abbrechen?</string>
     <string name="scan_keinegeraete">Es wurden keine Geräte erfasst. Wollen Sie die Erfassung abbrechen?</string>
@@ -54,28 +50,48 @@
     <string name="scan_dateierstellt">Datei wurde erstellt.</string>
     <string name="scan_berechver">Berechtigung verweigert.</string>
 
-<!-- Standardwerte für Array -->
-    <string name="pc">PC</string>
-    <string name="drucker">Drucker</string>
-    <string name="monitor">Monitor</string>
-    <string name="beamer">Beamer</string>
+    <!-- Scannen (XML) -->
+    <string name="scan_tv_raumname">Raumname:</string>
+    <string name="scan_tv_typ">Gerätetyp:</string>
+    <string name="scan_tv_inventarnummer">Inventarnummer:</string>
+    <string name="scan_tv_notiz">Notiz:</string>
+    <string name="scan_et_raumname_hint">Raumname eingeben...</string>
+    <string name="scan_et_inventarnummer_hint">Letzter Scan...</string>
+    <string name="scan_et_notiz_hint">Bemerkung ... (optional)</string>
+    <string name="scan_btn_scan">Scannen</string>
+    <string name="scan_btn_hinzufuegen">Gerät hinzufügen</string>
+    <string name="scan_btn_erfassungsende">Raumerfassung abschließen</string>
 
-    <!-- Dies muss noch geprüft werden (außer Array) -->
-
-    <string name="manuelscan">Manuell hinzufügen</string>
-    <string name="delete">Löschen</string>
-
-    <string name="export">Exportieren</string>
-    <string name="notiz">Bemerkung:</string>
-
-    <string name="add">Hinzufügen</string>
-    <string name="delte">Raum löschen</string>
-
-<!-- Löschen wenn Array eingelsen wird-->
+    <!-- Standardwerte für Gerätedropdown -->
     <string-array name="typen">
         <item>PC</item>
         <item>Monitor</item>
         <item>Drucker</item>
         <item>Beamer</item>
     </string-array>
+
+    <!--••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• -->
+
+    <!-- Raumdetails (Klasse) -->
+    <string name="raumstring_raum">Raum</string>
+    <string name="raumstring_typ">Gerätetyp</string>
+    <string name="raumstring_inventarnummer">Inventarnummer</string>
+    <string name="raumstring_notiz">Notiz</string>
+
+    <!--••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• -->
+
+    <!-- DateiHelper (Klasse) -->
+    <string name="dateihelper_berechtigung">Lese- und Schreibberechtigung erforderlich</string>
+    <string name="dateihelper_berechtigung_message">Zum Abrufen und Abspeichern der erfassten Daten wird eine Lese- und Schreibberechtigung benötigt.</string>
+    <string name="dateihelper_msg_raumlöschen_1">Raum </string>
+    <string name="dateihelper_msg_raumlöschen_2"> wurde gelöscht.</string>
+
+    <!--••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• -->
+
+    <!-- IntentIntegrator (Klasse) -->
+    <string name="scanner_installieren">Barcode-Scanner installieren?</string>
+    <string name="scanner_message">Diese App erfordert einen Barcode-Scanner. Möchten Sie diesen installieren?</string>
+
+    <!--••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• -->
+
 </resources>

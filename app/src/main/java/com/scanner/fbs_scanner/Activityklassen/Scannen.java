@@ -25,6 +25,7 @@ import com.scanner.fbs_scanner.R;
 
 public class Scannen extends AppCompatActivity {
 
+    //todo: Spinner, Funktion zum Hinzufügen eines Typs implementieren
     EditText et_inventarnummer,et_notiz;
     Button btn_scannen,btn_erfassungsende,btn_hinzufuegen;
     Spinner spin_typen;
@@ -34,16 +35,18 @@ public class Scannen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scannen);
+
         Bundle b = getIntent().getExtras();
-        //Setzte Format
+
+        // Setze Ausrichtung
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        //Setzte Titel
-        setTitle(getResources().getString(R.string.string_scannen) + b.get("KEY_RAUM"));
+
+        // Setze Titel
+        setTitle(getResources().getString(R.string.titelstring_Scannen) + b.get("KEY_RAUM"));
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.drawable.fbsklein);
 
-        //todo: Spinner, Funktion zum Hinzufügen eines Typs implementieren
         // Zuweisungen
         et_inventarnummer = findViewById(R.id.et_inventarnummer);
         tv_raumname_anz = findViewById(R.id.tv_raumname_anz);
@@ -54,17 +57,15 @@ public class Scannen extends AppCompatActivity {
         btn_erfassungsende = findViewById(R.id.btn_erfassungsende);
         tv_geraeteCounter = findViewById(R.id.tv_geraetecounter);
 
-
-
         // Übergabe des Raums
         String raum = b.getString("KEY_RAUM");
         tv_raumname_anz.setText(raum);
 
-
+        // hier erfolgt der Scanvorgang über den Barcodescanner
+        // das Ergebnis wird in der Methode onActivityResult entgegengenommen
         btn_scannen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 IntentIntegrator integrator = new IntentIntegrator(Scannen.this);
                 integrator.initiateScan();
             }
@@ -89,7 +90,7 @@ public class Scannen extends AppCompatActivity {
                             et_notiz.getText().toString().matches( "" ) ? "-" : et_notiz.getText().toString());
 
                     Geraet.geraeteliste.add(geraet);
-                    tv_geraeteCounter.setText(getString(R.string.tv_geraetecounter,String.valueOf(Geraet.geraeteliste.size())));
+                    tv_geraeteCounter.setText(getString(R.string.scan_tv_geraetecounter,String.valueOf(Geraet.geraeteliste.size())));
 
                     // Meldung: Gerät hinzugefügt
                     Toast.makeText(Scannen.this, getResources().getString(R.string.scan_add), Toast.LENGTH_SHORT).show();
