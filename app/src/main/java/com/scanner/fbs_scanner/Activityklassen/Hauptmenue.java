@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 
@@ -38,13 +40,12 @@ public class Hauptmenue extends AppCompatActivity {
     //todo Logfiles Aktionen des Useres und Fehlermeldungen (ggf. als asynchronen Service implementieren) Christian!
 
     //todo: verschiedene ActivityStates beachten (z.B. onResume, onRestart, onPause etc. ) Christian
-    //todo: bei Klicken auf FBS-Logo wird die FBS-Homepage angezeigt
 
 
 
     Button btn_raumerfassen;
     Button btn_anzeigen;
-
+    ImageButton homepage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +59,7 @@ public class Hauptmenue extends AppCompatActivity {
         // Zuweisungen
         btn_raumerfassen = findViewById(R.id.btn_erfassen);
         btn_anzeigen = findViewById(R.id.btn_anzeigen);
-
+        homepage = findViewById(R.id.ibtn_logo);
 
         /* bei Drücken des Buttons btn_raumerfassen wird ein Eingabefeld für den Raumnamen
            angezeigt und dessen Inhalt validiert */
@@ -103,5 +104,15 @@ public class Hauptmenue extends AppCompatActivity {
                 }
             }
         }) ;
+
+        //Öffnet die Homepage im Browser
+        homepage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.ferdinand-braun-schule.de/blog/category/news/"));
+                startActivity(intent);
+            }
+        });
+
     }
 }
