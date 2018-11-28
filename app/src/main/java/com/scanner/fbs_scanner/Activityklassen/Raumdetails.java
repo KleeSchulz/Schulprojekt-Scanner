@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.scanner.fbs_scanner.R;
@@ -44,6 +45,7 @@ public class Raumdetails extends AppCompatActivity {
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.drawable.fbsklein);
         actionBar.setDisplayHomeAsUpEnabled(true);
+
         // Zuweisungen
         tv_raumdetails = findViewById(R.id.tableView);
 
@@ -92,6 +94,15 @@ public class Raumdetails extends AppCompatActivity {
             tabellendaten[i][2] = geraeteListe.get(i).getNotiz();
         }
         tv_raumdetails.setDataAdapter(new SimpleTableDataAdapter(Raumdetails.this, tabellendaten));
+    }
+
+    // auf den Zurückpfeil reagieren
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 

@@ -29,7 +29,10 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 // Diese Klasse ermöglicht diverse Dateioperationen
 public final class DateiHelper{
@@ -183,9 +186,6 @@ public final class DateiHelper{
             if(f.isFile() && f.getName().endsWith( ".csv" )) {
                 raumliste.add(f.getName().substring(0,f.getName().length() -4));
             }
-            //Collections.sort(raumliste); // Todo: Raumsortierung
-
-
         }
         return sortiereListe(raumliste);
     }
@@ -204,22 +204,40 @@ public final class DateiHelper{
        }
     }
 
-    // Todo: Räume die mit einem Buchstaben beginnen: alphabetisch ordnen und an Nummern appenden
-    //       Räume die nach der Nummer einen Buchstaben haben sollen auch sortiert werden, z.B. 3a vor 3b
-    // Methode zum Sortieren einer Raumnummern enthaltenden ArrayList vom Typ String
-    private static ArrayList<String> sortiereListe(ArrayList<String> unsortierteListe){
-        ArrayList<String> sortierteListe = new ArrayList<>();
-        double[] arrNummern = new double[unsortierteListe.size()];
-        DecimalFormat df = new DecimalFormat();
-        df.setMaximumFractionDigits(3);
-        df.setMinimumFractionDigits(0);
-        for(int i = 0; i < unsortierteListe.size(); i++){
-            arrNummern[i] = Double.parseDouble(unsortierteListe.get(i));
-        }
-        Arrays.sort(arrNummern);
-        for(int i = 0; i < arrNummern.length; i++){
-            sortierteListe.add(String.valueOf(df.format(arrNummern[i])).replace(",","."));
-        }
-        return sortierteListe;
+    // Methode, die es ermöglicht, eine alphanumerische Sortierung des übergebenen Arrays vorzunehemen
+    private static ArrayList<String> sortiereListe(ArrayList<String> zuSortierendeListe){
+
+        final Pattern p = Pattern.compile("^\\d+");
+
+        Comparator<String> c = new Comparator<String>() {
+            @Override
+            public int compare(String object1, String object2) {
+                Matcher m = p.matcher(object1);
+                Integer number1 = null;
+                if (!m.find()) {
+                    return object1.compareTo(object2);
+                }
+                else {
+                    Integer number2 = null;
+                    number1 = Integer.parseInt(m.group());
+                    m = p.matcher(object2);
+                    if (!m.find()) {
+                        return object1.compareTo(object2);
+                    }
+                    else {
+                        number2 = Integer.parseInt(m.group());
+                        int comparison = number1.compareTo(number2);
+                        if (comparison != 0) {
+                            return comparison;
+                        }
+                        else {
+                            return object1.compareTo(object2);
+                        }
+                    }
+                }
+            }
+        };
+        Collections.sort(zuSortierendeListe, c);
+        return zuSortierendeListe;
     }
 }

@@ -116,6 +116,7 @@ public class Hauptmenue extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getResources().getString(R.string.hauptstring_link_FBS)));
                 startActivity(intent);
+
             }
         });
     }
