@@ -35,13 +35,13 @@ public class TinyDBHelper {
 
     public static void ersterStart(){
         if (tinyDB.gebeStandardBoolean("KEY_ErsterStart",true)){
-            geraettypen.add(0,App.getContext().getResources().getString(R.string.pc));
+         /*   geraettypen.add(0,App.getContext().getResources().getString(R.string.pc));
             geraettypen.add(1,App.getContext().getResources().getString(R.string.monitor));
             geraettypen.add(2,App.getContext().getResources().getString(R.string.drucker));
             geraettypen.add(3,App.getContext().getResources().getString(R.string.beamer));
             speicherTypen(geraettypen);
             tinyDB.setzeStandardBoolean("KEY_ErsterStart",false);
-        }
+        */}
     }
 
     public static void speicherTypen(ArrayList<String> typ){

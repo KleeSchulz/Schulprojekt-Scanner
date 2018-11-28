@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -12,10 +13,15 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethod;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -29,16 +35,12 @@ import java.util.ArrayList;
 
 public class Hauptmenue extends AppCompatActivity {
 
-    //Todo: Appicon Titlebar zuschneiden und rechts
-    //Todo: Responsive Layout für alle Handys! Sebastian                1
     //Todo: Logo Hauptmenü evtl. Hauptmenühintergrund weiß, AppIcon Sebastian      1
     //Todo: Alle Funktionen Testen Bugs beseitigen Sebastian            1
     //Todo: APK-Datei erzeugen! Sebastian                               1
-    //Todo: ggf. Toastmessages generell durch Snackbars ersetzten (Snackbars optisch anpassen) Christian
-    //Todo: Titelbar Zürückbutton Christian
+    //Todo: ggf. Toastmessages generell durch Snackbars ersetzten (Snackbars optisch anpassen) // Auslagern Christian
     //Todo: 2 sprachige App (Englisch u. Deutsch)
-    //Todo: Strings.xml - alle hardkodierten Strings einfügen! // Hauptmenüklasse, Raumdetailsklasse, Anzeigeklasse, Scannklasse fertig!
-    //todo Logfiles Aktionen des Useres und Fehlermeldungen (ggf. als asynchronen Service implementieren) Christian!
+    //todo Logfiles Aktionen des Useres und Fehlermeldungen (löschen, erstellen Datei, Appabstürze) Christian!
     //todo: verschiedene ActivityStates beachten (z.B. onResume, onRestart, onPause etc. ) Christian
 
 
@@ -59,6 +61,7 @@ public class Hauptmenue extends AppCompatActivity {
         btn_anzeigen = findViewById(R.id.btn_anzeigen);
         ib_homepage = findViewById(R.id.ibtn_logo);
 
+
         // bei Drücken des Buttons btn_raumerfassen wird ein Eingabefeld für den Raumnamen
         // angezeigt und dessen Inhalt validiert
         btn_raumerfassen.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +69,7 @@ public class Hauptmenue extends AppCompatActivity {
             public void onClick(View v) {
                 Context c = Hauptmenue.this;
                 final EditText taskEditText = new EditText(c);
+                
                 AlertDialog.Builder builder = new AlertDialog.Builder(c);
                 builder.setTitle(getResources().getString(R.string.hauptstring_raumerfassen));
                 builder.setMessage(getResources().getString(R.string.hauptstring_raumnameeingabe));
@@ -80,6 +84,7 @@ public class Hauptmenue extends AppCompatActivity {
                             bundle.putString("KEY_RAUM", raum);
                             intent.putExtras(bundle);
                             startActivity(intent);
+
                         }
                         else{
                             Toast.makeText(Hauptmenue.this, getResources().getString(R.string.hauptstring_raumleer), Toast.LENGTH_SHORT).show();

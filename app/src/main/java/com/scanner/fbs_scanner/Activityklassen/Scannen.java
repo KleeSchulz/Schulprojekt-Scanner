@@ -4,11 +4,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,8 +28,8 @@ import com.scanner.fbs_scanner.R;
 public class Scannen extends AppCompatActivity {
 
     //todo: Spinner, Funktion zum Hinzufügen eines Typs implementieren
-    EditText et_inventarnummer,et_notiz;
-    Button btn_scannen,btn_erfassungsende,btn_hinzufuegen;
+    EditText et_inventarnummer, et_notiz;
+    Button btn_scannen, btn_erfassungsende, btn_hinzufuegen;
     Spinner spin_typen;
     TextView tv_raumname_anz, tv_geraeteCounter;
 
@@ -46,6 +48,8 @@ public class Scannen extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.drawable.fbsklein);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
 
         // Zuweisungen
         et_inventarnummer = findViewById(R.id.et_inventarnummer);
@@ -76,21 +80,19 @@ public class Scannen extends AppCompatActivity {
         btn_hinzufuegen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (tv_raumname_anz.getText().toString().length() == 0){
+                if (tv_raumname_anz.getText().toString().length() == 0) {
                     Toast.makeText(Scannen.this, getResources().getString(R.string.scan_raumleer), Toast.LENGTH_SHORT).show();
-                }
-                else if (et_inventarnummer.getText().toString().length() == 0){
+                } else if (et_inventarnummer.getText().toString().length() == 0) {
                     Toast.makeText(Scannen.this, getResources().getString(R.string.scan_invleer), Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     Geraet geraet = new Geraet(
                             tv_raumname_anz.getText().toString(),
                             spin_typen.getSelectedItem().toString(),
                             et_inventarnummer.getText().toString(),
-                            et_notiz.getText().toString().matches( "" ) ? "-" : et_notiz.getText().toString());
+                            et_notiz.getText().toString().matches("") ? "-" : et_notiz.getText().toString());
 
                     Geraet.geraeteliste.add(geraet);
-                    tv_geraeteCounter.setText(getString(R.string.scan_tv_geraetecounter,String.valueOf(Geraet.geraeteliste.size())));
+                    tv_geraeteCounter.setText(getString(R.string.scan_tv_geraetecounter, String.valueOf(Geraet.geraeteliste.size())));
 
                     // Meldung: Gerät hinzugefügt
                     Toast.makeText(Scannen.this, getResources().getString(R.string.scan_add), Toast.LENGTH_SHORT).show();
@@ -108,26 +110,25 @@ public class Scannen extends AppCompatActivity {
         btn_erfassungsende.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Geraet.geraeteliste.size() > 0) {
+                if (Geraet.geraeteliste.size() > 0) {
                     DateiHelper.activityPlaceholder = Scannen.this;
                     DateiHelper.fordereLeseUndSchreibPermissionAn();
-                }
-                else{
-                    new AlertDialog.Builder( Scannen.this )
-                            .setTitle(getResources().getString(R.string.scan_abbrechen) )
-                            .setMessage( getResources().getString(R.string.scan_keinegeraete) )
-                            .setPositiveButton( getResources().getString(R.string.string_ja), new DialogInterface.OnClickListener() {
+                } else {
+                    new AlertDialog.Builder(Scannen.this)
+                            .setTitle(getResources().getString(R.string.scan_abbrechen))
+                            .setMessage(getResources().getString(R.string.scan_keinegeraete))
+                            .setPositiveButton(getResources().getString(R.string.string_ja), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     startActivity(new Intent(Scannen.this, Hauptmenue.class));
                                 }
-                            } )
-                            .setNegativeButton( getResources().getString(R.string.string_nein), new DialogInterface.OnClickListener() {
+                            })
+                            .setNegativeButton(getResources().getString(R.string.string_nein), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     dialog.dismiss();
                                 }
-                            } )
+                            })
                             .create().show();
                 }
             }
@@ -137,22 +138,27 @@ public class Scannen extends AppCompatActivity {
     // bei Betätigen der Zurücktaste kommt folgende Meldung
     @Override
     public void onBackPressed() {
-        new AlertDialog.Builder( Scannen.this )
-                .setTitle( getResources().getString(R.string.scan_abbrechen) )
-                .setMessage(getResources().getString(R.string.scan_datenloeschen) )
-                .setPositiveButton( getResources().getString(R.string.string_ja), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        startActivity(new Intent(Scannen.this, Hauptmenue.class));
-                    }
-                } )
-                .setNegativeButton( getResources().getString(R.string.string_nein                ), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                } )
-                .create().show();
+        if(Geraet.geraeteliste.size() < 1){
+            startActivity(new Intent(Scannen.this, Hauptmenue.class));
+        }
+        else {
+            new AlertDialog.Builder(Scannen.this)
+                    .setTitle(getResources().getString(R.string.scan_abbrechen))
+                    .setMessage(getResources().getString(R.string.scan_datenloeschen))
+                    .setPositiveButton(getResources().getString(R.string.string_ja), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            startActivity(new Intent(Scannen.this, Hauptmenue.class));
+                        }
+                    })
+                    .setNegativeButton(getResources().getString(R.string.string_nein), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .create().show();
+        }
     }
 
     // Behandlung des Scanergebnisses - wenn erfolgreich, befülle Inventarnummerfeld
@@ -167,18 +173,25 @@ public class Scannen extends AppCompatActivity {
     // nimmt das Ergebnis einer Permissionanfrage entgegen
     // diese Methode muss in jeder Activity implementiert werden, in der die Permissions angefragt werden
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults ){
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
 
-        if(requestCode == DateiHelper.STORAGE_REQUEST_CODE){
-            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+        if (requestCode == DateiHelper.STORAGE_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 DateiHelper.erzeugeUndBeschreibeDatei();
-                Toast.makeText(this, getResources().getString(R.string.scan_berecher) + "\n" + getResources().getString(R.string.scan_dateierstellt),Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getResources().getString(R.string.scan_berecher) + "\n" + getResources().getString(R.string.scan_dateierstellt), Toast.LENGTH_LONG).show();
                 Geraet.geraeteliste.clear();
                 startActivity(new Intent(Scannen.this, Hauptmenue.class));
-            }
-            else {
-                Toast.makeText(this, getResources().getString(R.string.scan_berechver),Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, getResources().getString(R.string.scan_berechver), Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

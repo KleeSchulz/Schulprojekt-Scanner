@@ -20,7 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activityklassen.Scannen" />
+        <activity android:name=".Activityklassen.Scannen">
+        </activity>
         <activity android:name=".Activityklassen.Anzeige" />
         <activity android:name=".Activityklassen.Raumdetails"></activity>
     </application>

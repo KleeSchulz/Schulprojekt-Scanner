@@ -29,6 +29,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Locale;
 
 // Diese Klasse ermöglicht diverse Dateioperationen
 public final class DateiHelper{
@@ -204,7 +205,7 @@ public final class DateiHelper{
     }
 
     // Todo: Räume die mit einem Buchstaben beginnen: alphabetisch ordnen und an Nummern appenden
-    // Todo: Räume die nach der Nummer einen Buchstaben haben sollen auch sortiert werden, z.B. 3a vor 3b
+    //       Räume die nach der Nummer einen Buchstaben haben sollen auch sortiert werden, z.B. 3a vor 3b
     // Methode zum Sortieren einer Raumnummern enthaltenden ArrayList vom Typ String
     private static ArrayList<String> sortiereListe(ArrayList<String> unsortierteListe){
         ArrayList<String> sortierteListe = new ArrayList<>();
@@ -217,7 +218,7 @@ public final class DateiHelper{
         }
         Arrays.sort(arrNummern);
         for(int i = 0; i < arrNummern.length; i++){
-            sortierteListe.add(String.valueOf(df.format(arrNummern[i])));
+            sortierteListe.add(String.valueOf(df.format(arrNummern[i])).replace(",","."));
         }
         return sortierteListe;
     }

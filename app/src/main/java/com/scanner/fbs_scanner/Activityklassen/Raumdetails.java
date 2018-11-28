@@ -26,7 +26,6 @@ public class Raumdetails extends AppCompatActivity {
     // TODO: Sortierung implementieren (sowohl bei Anzeige- als auch bei Raumdetails-Activity) Christian
     // TODO: E-Mail versenden-Funktion im Contextmenü (Anzeige) hinzufügen
     // TODO: Bearbeiten der Liste ermöglichen
-    // TODO: Raumanzeige im Header, dafür aus der Tabelle entfernen
     // TODO: anpassen, dass Titeltext der Activity linksbündig steht und Bild rechts
 
     TableView<String[]> tv_raumdetails;
@@ -44,7 +43,7 @@ public class Raumdetails extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.drawable.fbsklein);
-
+        actionBar.setDisplayHomeAsUpEnabled(true);
         // Zuweisungen
         tv_raumdetails = findViewById(R.id.tableView);
 
@@ -94,4 +93,6 @@ public class Raumdetails extends AppCompatActivity {
         }
         tv_raumdetails.setDataAdapter(new SimpleTableDataAdapter(Raumdetails.this, tabellendaten));
     }
+
+
 }

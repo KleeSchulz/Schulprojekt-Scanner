@@ -36,12 +36,12 @@ public class Anzeige extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.drawable.fbsklein);
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         // todo: Wenn Datei extern hinzugefügt dann Absturz                      1
         // todo: AlertDialog und EditText, bei enter Tastatur schließen         1
         // todo: generell Layout und Schriftgrößen anpassen                     2
         // TODO: SWIPE TO REFRESH - Funktion für ListView implementieren! Christian 1
-        // Todo: Listview Oben anfagen anzeigen! Christian   3
 
         // Zuweisungen
         lv_raeume = findViewById( R.id.lv_raeume );
@@ -95,5 +95,13 @@ public class Anzeige extends AppCompatActivity {
         if(arrayAdapter.getCount() < 1){
             startActivity(new Intent(Anzeige.this, Hauptmenue.class) );
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
