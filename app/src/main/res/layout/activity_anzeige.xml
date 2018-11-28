@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:accessibilityPaneTitle="Test"
     tools:context=".Activityklassen.Anzeige">
 
     <ListView
         android:id="@+id/lv_raeume"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"

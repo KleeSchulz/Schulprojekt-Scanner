@@ -27,6 +27,7 @@ public class Raumdetails extends AppCompatActivity {
     // TODO: E-Mail versenden-Funktion im Contextmenü (Anzeige) hinzufügen
     // TODO: Bearbeiten der Liste ermöglichen
     // TODO: Raumanzeige im Header, dafür aus der Tabelle entfernen
+    // TODO: anpassen, dass Titeltext der Activity linksbündig steht und Bild rechts
 
     TableView<String[]> tv_raumdetails;
     @Override

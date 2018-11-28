@@ -23,7 +23,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -106,7 +108,7 @@ public final class DateiHelper{
     // beschreibt die Datei mit den hinzugefügten Geräten
     public static void erzeugeUndBeschreibeDatei(){
         if(Geraet.geraeteliste.get(0) != null) {
-            String dateiRaumName = Geraet.geraeteliste.get( 0 ).getRaumName().trim() + ".csv";
+            String dateiRaumName = Geraet.geraeteliste.get( 0 ).getRaumName().trim().replace( ",","." ) + ".csv";
 
             pruefeSpeicher();
             if (externerSpeicherBeschreibbar) {
@@ -181,8 +183,10 @@ public final class DateiHelper{
                 raumliste.add(f.getName().substring(0,f.getName().length() -4));
             }
             //Collections.sort(raumliste); // Todo: Raumsortierung
+
+
         }
-        return raumliste;
+        return sortiereListe(raumliste);
     }
 
     // löscht die Datei, die als Parameter in Form des reinen Raumanmens übergeben wird
@@ -193,9 +197,28 @@ public final class DateiHelper{
                 geloescht = f.delete();
             }
             if(geloescht){
-                String message = App.getContext().getResources().getString(R.string.dateihelper_msg_raumlöschen_1) + raumname + App.getContext().getResources().getString(R.string.dateihelper_msg_raumlöschen_2);
+                String message = App.getContext().getResources().getString(R.string.dateihelper_msg_raumlöschen_1) + " " + raumname + " " + App.getContext().getResources().getString(R.string.dateihelper_msg_raumlöschen_2);
                 Toast.makeText( activity, message,Toast.LENGTH_LONG ).show();
             }
        }
+    }
+
+    // Todo: Räume die mit einem Buchstaben beginnen: alphabetisch ordnen und an Nummern appenden
+    // Todo: Räume die nach der Nummer einen Buchstaben haben sollen auch sortiert werden, z.B. 3a vor 3b
+    // Methode zum Sortieren einer Raumnummern enthaltenden ArrayList vom Typ String
+    private static ArrayList<String> sortiereListe(ArrayList<String> unsortierteListe){
+        ArrayList<String> sortierteListe = new ArrayList<>();
+        double[] arrNummern = new double[unsortierteListe.size()];
+        DecimalFormat df = new DecimalFormat();
+        df.setMaximumFractionDigits(3);
+        df.setMinimumFractionDigits(0);
+        for(int i = 0; i < unsortierteListe.size(); i++){
+            arrNummern[i] = Double.parseDouble(unsortierteListe.get(i));
+        }
+        Arrays.sort(arrNummern);
+        for(int i = 0; i < arrNummern.length; i++){
+            sortierteListe.add(String.valueOf(df.format(arrNummern[i])));
+        }
+        return sortierteListe;
     }
 }

@@ -83,8 +83,8 @@
     <!-- DateiHelper (Klasse) -->
     <string name="dateihelper_berechtigung">Lese- und Schreibberechtigung erforderlich</string>
     <string name="dateihelper_berechtigung_message">Zum Abrufen und Abspeichern der erfassten Daten wird eine Lese- und Schreibberechtigung benötigt.</string>
-    <string name="dateihelper_msg_raumlöschen_1">Raum </string>
-    <string name="dateihelper_msg_raumlöschen_2"> wurde gelöscht.</string>
+    <string name="dateihelper_msg_raumlöschen_1">Raum</string>
+    <string name="dateihelper_msg_raumlöschen_2">wurde gelöscht.</string>
 
     <!--••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• -->
 
