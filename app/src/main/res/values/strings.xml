@@ -6,6 +6,7 @@
     <string name="app_name">FBS-Scanner</string>
     <string name="string_abbrechen">Abbrechen</string>
     <string name="string_loeschen">Löschen</string>
+    <string name="string_loeschen_alleRaeume">Alle Räume löschen</string>
     <string name="string_ja">Ja</string>
     <string name="string_nein">Nein</string>
     <string name="string_ok">OK</string>
@@ -14,7 +15,7 @@
 
     <!-- Titelbars -->
     <string name="titelstring_Anzeige">Erfasste Räume</string>
-    <string name="titelstring_Scannen">Geräte erfassen für Raum: </string>
+    <string name="titelstring_Scannen">Erfassung - Raum:</string>
     <string name="titelstring_raumdetails">Raum: </string>
 
     <!--••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• -->
@@ -85,6 +86,9 @@
     <string name="dateihelper_berechtigung_message">Zum Abrufen und Abspeichern der erfassten Daten wird eine Lese- und Schreibberechtigung benötigt.</string>
     <string name="dateihelper_msg_raumlöschen_1">Raum</string>
     <string name="dateihelper_msg_raumlöschen_2">wurde gelöscht.</string>
+    <string name="dateihelper_alle_raeume_loeschen">Alle Räume löschen?</string>
+    <string name="dateihelper_alle_raeume_loeschen_message">Sollen wirklich alle Räume unwiderruflich gelöscht werden?</string>
+    <string name="dateihelper_alle_raeume_geloescht">Alle Räume gelöscht.</string>
 
     <!--••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• -->
 

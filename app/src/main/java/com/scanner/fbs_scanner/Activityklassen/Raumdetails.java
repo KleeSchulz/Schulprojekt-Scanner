@@ -15,19 +15,21 @@ import com.scanner.fbs_scanner.Standardklassen.DateiHelper;
 import com.scanner.fbs_scanner.Standardklassen.Geraet;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
+import de.codecrafters.tableview.SortableTableView;
 import de.codecrafters.tableview.TableView;
 import de.codecrafters.tableview.listeners.SwipeToRefreshListener;
+import de.codecrafters.tableview.listeners.TableDataClickListener;
 import de.codecrafters.tableview.model.TableColumnPxWidthModel;
 import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 
+import static com.scanner.fbs_scanner.Standardklassen.App.getContext;
+
 public class Raumdetails extends AppCompatActivity {
 
-    // TODO: Sortierung implementieren (sowohl bei Anzeige- als auch bei Raumdetails-Activity) Christian
     // TODO: E-Mail versenden-Funktion im Contextmenü (Anzeige) hinzufügen
-    // TODO: Bearbeiten der Liste ermöglichen
-    // TODO: anpassen, dass Titeltext der Activity linksbündig steht und Bild rechts
 
     TableView<String[]> tv_raumdetails;
     @Override
@@ -39,11 +41,10 @@ public class Raumdetails extends AppCompatActivity {
         //Setze Ausrichtung
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        //Setze Titel
+        // Setze Actionbar
         setTitle(getResources().getString(R.string.titelstring_raumdetails) + " " + intent.getStringExtra( "KEY_SELEKTIERTER_RAUM" ));
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setIcon(R.drawable.fbsklein);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         // Zuweisungen
@@ -101,9 +102,8 @@ public class Raumdetails extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             onBackPressed();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 }

@@ -43,11 +43,10 @@ public class Scannen extends AppCompatActivity {
         // Setze Ausrichtung
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        // Setze Titel
-        setTitle(getResources().getString(R.string.titelstring_Scannen) + b.get("KEY_RAUM"));
+        // Setze Actionbar
+        setTitle(getResources().getString(R.string.titelstring_Scannen) + " " + b.get("KEY_RAUM"));
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setIcon(R.drawable.fbsklein);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
 
@@ -192,6 +191,7 @@ public class Scannen extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             onBackPressed();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

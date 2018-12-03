@@ -3,11 +3,14 @@ package com.scanner.fbs_scanner.Activityklassen;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,6 +25,7 @@ import com.scanner.fbs_scanner.Standardklassen.DateiHelper;
 public class Anzeige extends AppCompatActivity {
 
     ListView lv_raeume;
+    SwipeRefreshLayout refreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,20 +35,18 @@ public class Anzeige extends AppCompatActivity {
         // Setze Ausrichtung
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        // Setze Titel
+        // Setze Actionbar
         setTitle(getResources().getString(R.string.titelstring_Anzeige));
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setIcon(R.drawable.fbsklein);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         // todo: Wenn Datei extern hinzugefügt dann Absturz                      1
-        // todo: AlertDialog und EditText, bei enter Tastatur schließen         1
         // todo: generell Layout und Schriftgrößen anpassen                     2
-        // TODO: SWIPE TO REFRESH - Funktion für ListView implementieren! Christian 1
 
         // Zuweisungen
         lv_raeume = findViewById( R.id.lv_raeume );
+        refreshLayout = findViewById( R.id.swipe_refresh_layout );
 
         // Aktivieren der Contextmenü-Funktion und Laden der Daten
         registerForContextMenu( lv_raeume );
@@ -59,7 +61,25 @@ public class Anzeige extends AppCompatActivity {
                 startActivity(intentDetails);
             }
         } );
+
+        // aktualisiere die Daten bei SwipeToRefresh
+        refreshLayout.setOnRefreshListener( new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                ladeRaeume();
+                refreshLayout.setRefreshing( false );
+            }
+        } );
     }
+
+    // zeige Menü in Actionbar an
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.activity_anzeige_actionbar_menu, menu);
+        return true;
+    }
+
 
     // bei einem LongClick auf ein Listitem öffnet sich ein Kontextmenü
    @Override
@@ -90,19 +110,28 @@ public class Anzeige extends AppCompatActivity {
     // erfassten Räume beinhaltet
     private void ladeRaeume(){
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.activity_anzeige_listview_item, DateiHelper.gibRaumListe());
-        lv_raeume.setAdapter(arrayAdapter);
 
         if(arrayAdapter.getCount() < 1){
             startActivity(new Intent(Anzeige.this, Hauptmenue.class) );
         }
+        else {
+            lv_raeume.setAdapter(arrayAdapter);
+        }
     }
 
     // auf den Zurückpfeil reagieren
+    // auf Actionbarmenü reagieren
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            case R.id.option_loescheAlleRaeume:
+                DateiHelper.loescheAlleDateien( this );
+                return true;
+            default:
+                return super.onOptionsItemSelected( item );
         }
-        return super.onOptionsItemSelected(item);
     }
 }

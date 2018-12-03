@@ -14,6 +14,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.scanner.fbs_scanner.Activityklassen.Anzeige;
 import com.scanner.fbs_scanner.Activityklassen.Hauptmenue;
 import com.scanner.fbs_scanner.R;
 
@@ -202,6 +204,36 @@ public final class DateiHelper{
                 Toast.makeText( activity, message,Toast.LENGTH_LONG ).show();
             }
        }
+    }
+
+    // löscht alle Raumdateien im Verzeichnis FBS
+    public static void loescheAlleDateien(final Activity activity) {
+        new AlertDialog.Builder( activity )
+                .setTitle( App.getContext().getResources().getString( R.string.dateihelper_alle_raeume_loeschen ) )
+                .setMessage( App.getContext().getResources().getString( R.string.dateihelper_alle_raeume_loeschen_message ) )
+                .setPositiveButton( App.getContext().getResources().getString( R.string.string_ja ), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        boolean geloescht = false;
+                        for (File f : csvVerzeichnis.listFiles()) {
+                            if (f.isFile() && f.getName().endsWith( ".csv" )) {
+                                geloescht = f.delete();
+                            }
+                        }
+                        if (geloescht) {
+                            String message = App.getContext().getResources().getString( R.string.dateihelper_alle_raeume_geloescht );
+                            Toast.makeText( activity, message, Toast.LENGTH_LONG ).show();
+                            activity.startActivity(new Intent(activity, Hauptmenue.class) );
+                        }
+                    }
+                } )
+                .setNegativeButton( App.getContext().getResources().getString( R.string.string_abbrechen ), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                } )
+                .create().show();
     }
 
     // Methode, die es ermöglicht, eine alphanumerische Sortierung des übergebenen Arrays vorzunehemen

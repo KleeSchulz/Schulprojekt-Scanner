@@ -111,10 +111,10 @@
         android:ems="10"
         android:hint="@string/scan_et_notiz_hint"
         android:imeOptions="actionDone"
-        android:inputType="textMultiLine"
+        android:inputType="text"
         android:maxLength="70"
-        android:maxLines="3"
-        android:singleLine="false"
+        android:maxLines="1"
+        android:singleLine="true"
         app:layout_constraintStart_toEndOf="@+id/tv_inventarnummer"
         app:layout_constraintTop_toBottomOf="@+id/btn_scan" />
 

@@ -12,6 +12,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -61,16 +62,16 @@ public class Hauptmenue extends AppCompatActivity {
         btn_anzeigen = findViewById(R.id.btn_anzeigen);
         ib_homepage = findViewById(R.id.ibtn_logo);
 
+        final EditText taskEditText = new EditText(Hauptmenue.this);
+        taskEditText.setInputType(InputType.TYPE_CLASS_TEXT );
+        taskEditText.setMaxLines( 1 );
 
         // bei Drücken des Buttons btn_raumerfassen wird ein Eingabefeld für den Raumnamen
         // angezeigt und dessen Inhalt validiert
         btn_raumerfassen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Context c = Hauptmenue.this;
-                final EditText taskEditText = new EditText(c);
-                
-                AlertDialog.Builder builder = new AlertDialog.Builder(c);
+                AlertDialog.Builder builder = new AlertDialog.Builder(Hauptmenue.this);
                 builder.setTitle(getResources().getString(R.string.hauptstring_raumerfassen));
                 builder.setMessage(getResources().getString(R.string.hauptstring_raumnameeingabe));
                 builder.setView(taskEditText);
@@ -96,6 +97,29 @@ public class Hauptmenue extends AppCompatActivity {
                 dialog.show();
             }
         });
+
+        // auch beim Drücken von Enter soll man weitergeleitet werden
+        taskEditText.setOnEditorActionListener( new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(actionId == EditorInfo.IME_ACTION_DONE){
+                    String raum = String.valueOf(taskEditText.getText());
+                    if (raum.length()>0) {
+                        Intent intent = new Intent(Hauptmenue.this, Scannen.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("KEY_RAUM", raum);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+
+                    }
+                    else{
+                        Toast.makeText(Hauptmenue.this, getResources().getString(R.string.hauptstring_raumleer), Toast.LENGTH_SHORT).show();
+                    }
+                    return true;
+                }
+                return false;
+            }
+        } );
 
         // bei Drücken des Buttons btn_anzeigen wird die Anzeigeactivity gestartet, sofern
         // bereits Räume erfasst wurden
