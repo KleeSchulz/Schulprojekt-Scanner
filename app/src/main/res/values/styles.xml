@@ -6,10 +6,9 @@
         <item name="colorPrimary">@color/statusbar</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:itemBackground">@color/colorPrimaryDark</item>
         <item name="android:colorBackground">@color/background_material_light</item>
-
-        <!--Todo: Button Style allgemein definieren! Text Christian-->
-
     </style>
+
 
 </resources>

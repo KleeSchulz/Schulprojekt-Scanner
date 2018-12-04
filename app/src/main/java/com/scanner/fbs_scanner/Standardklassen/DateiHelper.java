@@ -39,6 +39,7 @@ import java.util.regex.Pattern;
 // Diese Klasse ermöglicht diverse Dateioperationen
 public final class DateiHelper{
 
+    // Todo: Bessere Lösung für ActivityPlaceholder finden, z.B. mit Medhodenparameter Activity activity
     // bevor Berechtigungen abgefragt werden, dieser Variable die anfragende Activityklasse zuweisen
     // (z.B. DateiHelper.activityPlaceholder = Hauptmenue.this;)
     public static Activity activityPlaceholder;

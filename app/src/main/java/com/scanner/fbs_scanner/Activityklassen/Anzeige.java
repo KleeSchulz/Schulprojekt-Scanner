@@ -82,7 +82,7 @@ public class Anzeige extends AppCompatActivity {
    @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu( menu, v, menuInfo );
-        menu.setHeaderTitle(getResources().getString(R.string.anz_aktion));
+        //menu.setHeaderTitle(getResources().getString(R.string.anz_aktion));
         getMenuInflater().inflate( R.menu.activity_anzeige_context_menu,menu );
     }
 

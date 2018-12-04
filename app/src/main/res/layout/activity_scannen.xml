@@ -129,6 +129,7 @@
         android:layout_marginRight="100dp"
         android:background="@color/statusbar"
         android:text="@string/scan_btn_scan"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -147,7 +148,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_notiz" />
+        app:layout_constraintTop_toBottomOf="@+id/et_notiz"
+        android:background="@color/statusbar"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <Button
         android:id="@+id/btn_erfassungsende"
@@ -162,6 +165,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/statusbar"
+        android:textColor="@color/colorPrimaryDark" />
 
 </android.support.constraint.ConstraintLayout>

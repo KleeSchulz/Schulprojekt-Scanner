@@ -18,7 +18,9 @@
         android:text="@string/hauptstring_btn_erfassen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/statusbar"
+        android:textColor="@color/colorPrimaryDark" />
 
     <Button
         android:id="@+id/btn_anzeigen"
@@ -32,7 +34,9 @@
         android:text="@string/hauptstring_btn_anzeigen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/statusbar"
+        android:textColor="@color/colorPrimaryDark" />/>
 
     <ImageButton
         android:id="@+id/ibtn_logo"
@@ -46,6 +50,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/fbslogogesamt" />
+        android:src="@drawable/fbslogogesamt" />
 
 </android.support.constraint.ConstraintLayout>
