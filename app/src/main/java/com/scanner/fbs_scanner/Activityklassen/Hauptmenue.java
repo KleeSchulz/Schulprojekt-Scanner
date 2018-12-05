@@ -9,6 +9,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.scanner.fbs_scanner.Standardklassen.App;
 import com.scanner.fbs_scanner.Standardklassen.DateiHelper;
 import com.scanner.fbs_scanner.R;
 import com.scanner.fbs_scanner.Standardklassen.Geraet;
@@ -49,6 +51,7 @@ public class Hauptmenue extends AppCompatActivity {
     Button btn_anzeigen;
     ImageButton ib_homepage;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,64 +65,68 @@ public class Hauptmenue extends AppCompatActivity {
         btn_anzeigen = findViewById(R.id.btn_anzeigen);
         ib_homepage = findViewById(R.id.ibtn_logo);
 
-        final EditText taskEditText = new EditText(Hauptmenue.this);
-        taskEditText.setInputType(InputType.TYPE_CLASS_TEXT );
-        taskEditText.setMaxLines( 1 );
-
         // bei Drücken des Buttons btn_raumerfassen wird ein Eingabefeld für den Raumnamen
         // angezeigt und dessen Inhalt validiert
-        btn_raumerfassen.setOnClickListener(new View.OnClickListener() {
+        btn_raumerfassen.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(Hauptmenue.this);
-                builder.setTitle(getResources().getString(R.string.hauptstring_raumerfassen));
-                builder.setMessage(getResources().getString(R.string.hauptstring_raumnameeingabe));
-                builder.setView(taskEditText);
-                builder.setPositiveButton(getResources().getString(R.string.hauptstring_raumscannen), new DialogInterface.OnClickListener() {
+                final EditText taskEditText = new EditText(Hauptmenue.this);
+                // auch beim Drücken von Enter soll man weitergeleitet werden
+                taskEditText.setOnEditorActionListener( new TextView.OnEditorActionListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        String raum = String.valueOf(taskEditText.getText());
-                        if (raum.length()>0) {
-                            Intent intent = new Intent(Hauptmenue.this, Scannen.class);
-                            Bundle bundle = new Bundle();
-                            bundle.putString("KEY_RAUM", raum);
-                            intent.putExtras(bundle);
-                            startActivity(intent);
-
+                    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                        if(actionId == EditorInfo.IME_ACTION_DONE) {
+                            String raum = String.valueOf(taskEditText.getText());
+                            if (raum.length()>0) {
+                                Intent intent = new Intent( Hauptmenue.this, Scannen.class );
+                                Bundle bundle = new Bundle();
+                                bundle.putString( "KEY_RAUM", raum );
+                                intent.putExtras( bundle );
+                                startActivity( intent );
+                            }
+                            else {
+                                Toast.makeText(Hauptmenue.this, getResources().getString(R.string.hauptstring_raumleer), Toast.LENGTH_SHORT).show();
+                            }
+                            return true;
                         }
-                        else{
-                            Toast.makeText(Hauptmenue.this, getResources().getString(R.string.hauptstring_raumleer), Toast.LENGTH_SHORT).show();
-                        }
+                        return false;
                     }
-                });
-                builder.setNegativeButton(getResources().getString(R.string.string_abbrechen), null);
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                } );
+                taskEditText.setInputType(InputType.TYPE_CLASS_TEXT );
+                taskEditText.setMaxLines( 1 );
+
+                new AlertDialog.Builder( Hauptmenue.this )
+                    .setTitle(getResources().getString(R.string.hauptstring_raumerfassen))
+                    .setMessage(getResources().getString(R.string.hauptstring_raumnameeingabe))
+                    .setView(taskEditText)
+                    .setCancelable( true )
+                    .setPositiveButton(getResources().getString(R.string.hauptstring_raumscannen), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String raum = String.valueOf(taskEditText.getText());
+                                if (raum.length()>0) {
+                                    Intent intent = new Intent(Hauptmenue.this, Scannen.class);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("KEY_RAUM", raum);
+                                    intent.putExtras(bundle);
+                                    startActivity(intent);
+
+                                }
+                                else{
+                                    dialog.dismiss();
+                                    Toast.makeText(Hauptmenue.this, getResources().getString(R.string.hauptstring_raumleer), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        } )
+                    .setNegativeButton( App.getContext().getResources().getString(R.string.string_abbrechen), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        } )
+                    .create().show();
             }
         });
-
-        // auch beim Drücken von Enter soll man weitergeleitet werden
-        taskEditText.setOnEditorActionListener( new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if(actionId == EditorInfo.IME_ACTION_DONE){
-                    String raum = String.valueOf(taskEditText.getText());
-                    if (raum.length()>0) {
-                        Intent intent = new Intent(Hauptmenue.this, Scannen.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putString("KEY_RAUM", raum);
-                        intent.putExtras(bundle);
-                        startActivity(intent);
-
-                    }
-                    else{
-                        Toast.makeText(Hauptmenue.this, getResources().getString(R.string.hauptstring_raumleer), Toast.LENGTH_SHORT).show();
-                    }
-                    return true;
-                }
-                return false;
-            }
-        } );
 
         // bei Drücken des Buttons btn_anzeigen wird die Anzeigeactivity gestartet, sofern
         // bereits Räume erfasst wurden
