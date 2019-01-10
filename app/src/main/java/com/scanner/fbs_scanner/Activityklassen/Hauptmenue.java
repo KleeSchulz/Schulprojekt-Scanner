@@ -33,7 +33,10 @@ public class Hauptmenue extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hauptmenue);
 
-        //Setze Ausrichtung
+        // erstelle initial den FBS-Ordner, sofern er noch nicht existiert
+        DateiHelper.erstelleVerzeichnis();
+
+        // Setze Ausrichtung
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         // Zuweisungen

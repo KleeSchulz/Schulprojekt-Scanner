@@ -140,6 +140,16 @@ public final class DateiHelper{
         }
     }
 
+    // erstellt den FBS-Ordner
+    public static void erstelleVerzeichnis(){
+        pruefeSpeicher();
+        if (externerSpeicherBeschreibbar) {
+            if (!csvVerzeichnis.exists()) {
+                csvVerzeichnis.mkdir();
+            }
+        }
+    }
+
     // gleicht den übergebenen Raumnamen (ohne .csv) mit den im Verzeichnis FBS befindlichen csv-Dateien
     // ab, bei Übereinstimmung wird die jeweilige Datei ausgelesen und in Form eines Geraete-Arrays zurückgegeben
     public static ArrayList<Geraet> leseDateiAus(String raumname)

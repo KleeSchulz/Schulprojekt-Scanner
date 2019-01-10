@@ -18578,15 +18578,16 @@ com.scanner.fbs_scanner.Standardklassen.DateiHelper -> com.scanner.fbs_scanner.S
     boolean externerSpeicherBeschreibbar -> c
     java.io.File rootVerzeichnis -> d
     java.io.File csvVerzeichnis -> e
-    void pruefeSpeicher() -> e
+    void pruefeSpeicher() -> f
     void fordereLeseUndSchreibPermissionAn() -> a
     void erzeugeUndBeschreibeDatei() -> b
+    void erstelleVerzeichnis() -> c
     java.util.ArrayList leseDateiAus(java.lang.String) -> a
-    java.util.ArrayList gibRaumListe() -> c
+    java.util.ArrayList gibRaumListe() -> d
     void loescheDatei(java.lang.String,android.app.Activity) -> a
     void loescheAlleDateien(android.app.Activity) -> a
     java.util.ArrayList sortiereListe(java.util.ArrayList) -> a
-    java.io.File access$000() -> d
+    java.io.File access$000() -> e
     void <clinit>() -> <clinit>
 com.scanner.fbs_scanner.Standardklassen.DateiHelper$1 -> com.scanner.fbs_scanner.Standardklassen.a$1:
     void <init>() -> <init>
