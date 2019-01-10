@@ -56,8 +56,8 @@
     <string name="scan_tv_typ">Gerätetyp:</string>
     <string name="scan_tv_inventarnummer">Inventarnummer:</string>
     <string name="scan_tv_notiz">Notiz:</string>
-    <string name="scan_et_raumname_hint">Raumname eingeben...</string>
-    <string name="scan_et_inventarnummer_hint">Letzter Scan...</string>
+    <string name="scan_et_raumname_hint">Raumname eingeben ...</string>
+    <string name="scan_et_inventarnummer_hint">Scannen oder Eingeben ...</string>
     <string name="scan_et_notiz_hint">Bemerkung ... (optional)</string>
     <string name="scan_btn_scan">Scannen</string>
     <string name="scan_btn_hinzufuegen">Gerät hinzufügen</string>
@@ -95,14 +95,6 @@
     <!-- IntentIntegrator (Klasse) -->
     <string name="scanner_installieren">Barcode-Scanner installieren?</string>
     <string name="scanner_message">Diese App erfordert einen Barcode-Scanner. Möchten Sie diesen installieren?</string>
-
-    <!--••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• -->
-
-    <!-- TinyDBHelper (Klasse) -->
-    <string name="pc">PC</string>
-    <string name="monitor">Monitor</string>
-    <string name="drucker">Drucker</string>
-    <string name="beamer">Beamer</string>
 
     <!--••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• -->
 

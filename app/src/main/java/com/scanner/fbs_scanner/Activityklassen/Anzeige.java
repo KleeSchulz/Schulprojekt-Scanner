@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import com.scanner.fbs_scanner.R;
 import com.scanner.fbs_scanner.Standardklassen.DateiHelper;
 
@@ -37,9 +36,6 @@ public class Anzeige extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
-
-        // todo: Wenn Datei extern hinzugefügt dann Absturz                      1
-        // todo: generell Layout und Schriftgrößen anpassen                     2
 
         // Zuweisungen
         lv_raeume = findViewById( R.id.lv_raeume );
@@ -76,7 +72,6 @@ public class Anzeige extends AppCompatActivity {
         inflater.inflate(R.menu.activity_anzeige_actionbar_menu, menu);
         return true;
     }
-
 
     // bei einem LongClick auf ein Listitem öffnet sich ein Kontextmenü
    @Override

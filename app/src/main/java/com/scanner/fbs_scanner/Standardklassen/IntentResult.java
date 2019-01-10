@@ -16,7 +16,6 @@
 
 package com.scanner.fbs_scanner.Standardklassen;
 
-import com.scanner.fbs_scanner.Standardklassen.IntentIntegrator;
 
 /**
  * <p>Encapsulates the result of a barcode scan invoked through {@link IntentIntegrator}.</p>

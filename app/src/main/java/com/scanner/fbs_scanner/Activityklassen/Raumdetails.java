@@ -1,35 +1,23 @@
 package com.scanner.fbs_scanner.Activityklassen;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
-
 import com.scanner.fbs_scanner.R;
 import com.scanner.fbs_scanner.Standardklassen.DateiHelper;
 import com.scanner.fbs_scanner.Standardklassen.Geraet;
-
 import java.util.ArrayList;
-import java.util.Comparator;
-
-import de.codecrafters.tableview.SortableTableView;
 import de.codecrafters.tableview.TableView;
 import de.codecrafters.tableview.listeners.SwipeToRefreshListener;
-import de.codecrafters.tableview.listeners.TableDataClickListener;
 import de.codecrafters.tableview.model.TableColumnPxWidthModel;
 import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 
-import static com.scanner.fbs_scanner.Standardklassen.App.getContext;
 
 public class Raumdetails extends AppCompatActivity {
-
-    // TODO: E-Mail versenden-Funktion im Contextmenü (Anzeige) hinzufügen
 
     TableView<String[]> tv_raumdetails;
     @Override
@@ -37,20 +25,19 @@ public class Raumdetails extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_raumdetails );
         Intent intent = getIntent();
+        final String selektierterRaum = intent.getStringExtra( "KEY_SELEKTIERTER_RAUM" );
 
         //Setze Ausrichtung
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         // Setze Actionbar
-        setTitle(getResources().getString(R.string.titelstring_raumdetails) + " " + intent.getStringExtra( "KEY_SELEKTIERTER_RAUM" ));
+        setTitle(getResources().getString(R.string.titelstring_raumdetails) + " " + selektierterRaum);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         // Zuweisungen
         tv_raumdetails = findViewById(R.id.tableView);
-
-        final String selektierterRaum = intent.getStringExtra( "KEY_SELEKTIERTER_RAUM" );
 
         erstelleTabelle();
         ladeDaten(selektierterRaum);

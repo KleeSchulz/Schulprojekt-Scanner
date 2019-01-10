@@ -4,8 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
-import android.support.v4.app.NavUtils;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +15,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.scanner.fbs_scanner.Standardklassen.DateiHelper;
 import com.scanner.fbs_scanner.Standardklassen.Geraet;
 import com.scanner.fbs_scanner.Standardklassen.IntentIntegrator;
@@ -27,7 +24,6 @@ import com.scanner.fbs_scanner.R;
 
 public class Scannen extends AppCompatActivity {
 
-    //todo: Spinner, Funktion zum Hinzufügen eines Typs implementieren
     EditText et_inventarnummer, et_notiz;
     Button btn_scannen, btn_erfassungsende, btn_hinzufuegen;
     Spinner spin_typen;
@@ -48,7 +44,6 @@ public class Scannen extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
-
 
         // Zuweisungen
         et_inventarnummer = findViewById(R.id.et_inventarnummer);
@@ -147,6 +142,7 @@ public class Scannen extends AppCompatActivity {
                     .setPositiveButton(getResources().getString(R.string.string_ja), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            Geraet.geraeteliste.clear();
                             startActivity(new Intent(Scannen.this, Hauptmenue.class));
                         }
                     })

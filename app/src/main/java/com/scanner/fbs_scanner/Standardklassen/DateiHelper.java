@@ -3,7 +3,6 @@ package com.scanner.fbs_scanner.Standardklassen;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,34 +11,24 @@ import android.os.Build;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.widget.Toast;
-
-import com.scanner.fbs_scanner.Activityklassen.Anzeige;
 import com.scanner.fbs_scanner.Activityklassen.Hauptmenue;
 import com.scanner.fbs_scanner.R;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
-import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 // Diese Klasse ermöglicht diverse Dateioperationen
 public final class DateiHelper{
 
-    // Todo: Bessere Lösung für ActivityPlaceholder finden, z.B. mit Medhodenparameter Activity activity
     // bevor Berechtigungen abgefragt werden, dieser Variable die anfragende Activityklasse zuweisen
     // (z.B. DateiHelper.activityPlaceholder = Hauptmenue.this;)
     public static Activity activityPlaceholder;
@@ -193,7 +182,7 @@ public final class DateiHelper{
         return sortiereListe(raumliste);
     }
 
-    // löscht die Datei, die als Parameter in Form des reinen Raumanmens übergeben wird
+    // löscht die Datei, die als Parameter in Form des reinen Raumnamens übergeben wird
     public static void loescheDatei(String raumname, Activity activity){
         boolean geloescht = false;
         for(File f : csvVerzeichnis.listFiles()){

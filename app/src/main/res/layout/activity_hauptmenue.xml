@@ -14,13 +14,15 @@
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="148dp"
+        android:layout_marginBottom="160dp"
+        android:background="@color/statusbar"
         android:text="@string/hauptstring_btn_erfassen"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/statusbar"
-        android:textColor="@color/colorPrimaryDark" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_anzeigen"
@@ -30,13 +32,15 @@
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="76dp"
+        android:layout_marginBottom="72dp"
+        android:background="@color/statusbar"
         android:text="@string/hauptstring_btn_anzeigen"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/statusbar"
-        android:textColor="@color/colorPrimaryDark" />/>
+        app:layout_constraintStart_toStartOf="parent" />/>
 
     <ImageButton
         android:id="@+id/ibtn_logo"

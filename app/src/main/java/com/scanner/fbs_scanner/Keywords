@@ -2,14 +2,4 @@
 ||                                  Bundle- bzw. Intentkeys                                       ||
 ****************************************************************************************************
 KEY_RAUM = liefert den im AlertDialog eingegebenen Raumnamen an die Scannenactivity
-// Todo: Keys eintragen und beachten, dass Konvention eingehalten wird (KEY_???), alte Keys löschen Sebastian Schulz
-
-
-
-
-____________________________________________________________________________________________________
-****************************************************************************************************
-||                                       TinyDB-Keys                                              ||
-****************************************************************************************************
-KEY_TYP = Speicherwert für das Array für die Gerätetypen
-KEY_ErsterStart = Prüft ob die App erstmalig gestartet wird. -> Funktion für Standardwerte hinzugefügt.
+KEY_SELEKTIERTER_RAUM = selektierter Raum in der Anzeige-Activity, wird an Raumdetails übergeben
