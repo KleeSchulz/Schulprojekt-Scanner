@@ -106,7 +106,7 @@ public class Scannen extends AppCompatActivity {
             public void onClick(View v) {
                 if (Geraet.geraeteliste.size() > 0) {
                     DateiHelper.activityPlaceholder = Scannen.this;
-                    DateiHelper.fordereLeseUndSchreibPermissionAn();
+                    DateiHelper.fordereLeseUndSchreibPermissionAn(false);
                 } else {
                     new AlertDialog.Builder(Scannen.this)
                             .setTitle(getResources().getString(R.string.scan_abbrechen))

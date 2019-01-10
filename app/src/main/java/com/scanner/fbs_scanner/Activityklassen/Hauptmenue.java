@@ -3,6 +3,7 @@ package com.scanner.fbs_scanner.Activityklassen;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import com.scanner.fbs_scanner.Standardklassen.App;
 import com.scanner.fbs_scanner.Standardklassen.DateiHelper;
 import com.scanner.fbs_scanner.R;
+import com.scanner.fbs_scanner.Standardklassen.Geraet;
 
 
 public class Hauptmenue extends AppCompatActivity {
@@ -34,7 +36,8 @@ public class Hauptmenue extends AppCompatActivity {
         setContentView(R.layout.activity_hauptmenue);
 
         // erstelle initial den FBS-Ordner, sofern er noch nicht existiert
-        DateiHelper.erstelleVerzeichnis();
+        DateiHelper.activityPlaceholder = Hauptmenue.this;
+        DateiHelper.fordereLeseUndSchreibPermissionAn(true);
 
         // Setze Ausrichtung
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -127,5 +130,20 @@ public class Hauptmenue extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    // nimmt das Ergebnis einer Permissionanfrage entgegen
+    // diese Methode muss in jeder Activity implementiert werden, in der die Permissions angefragt werden
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+
+        if (requestCode == DateiHelper.STORAGE_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                DateiHelper.erstelleVerzeichnis();
+                Toast.makeText(this, getResources().getString(R.string.scan_berecher), Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, getResources().getString(R.string.scan_berechver), Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

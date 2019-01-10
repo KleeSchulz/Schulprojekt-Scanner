@@ -58,7 +58,7 @@ public final class DateiHelper{
 
     // prüft, ob Lese- und Schreibberechtigungen vorliegen und fordert diese wenn nötig an
     // liegen die Berechtigungn schon vor, wird bereits in dieser Methode die Datei erstellt
-    public static void fordereLeseUndSchreibPermissionAn() {
+    public static void fordereLeseUndSchreibPermissionAn(boolean nurVezeichnis) {
         // ist API-Version kleiner 23, werden Permissions schon bei der Installation zugestimmt
         if(Build.VERSION.SDK_INT < 23) {
             return;
@@ -92,10 +92,16 @@ public final class DateiHelper{
             // sind die Berechtigungen schon vorhanden, springt das Programm nicht in die onRequestPermissionsResult
             // Methode, deswegen müssen an dieser Stelle die sonst üblichen Operationen durchgeführt werden!
             else {
-                erzeugeUndBeschreibeDatei();
-                Toast.makeText(activityPlaceholder, App.getContext().getResources().getString(R.string.scan_dateierstellt),Toast.LENGTH_LONG).show();
-                Geraet.geraeteliste.clear();
-                activityPlaceholder.startActivity(new Intent(activityPlaceholder, Hauptmenue.class));
+                if(!nurVezeichnis){
+                    erzeugeUndBeschreibeDatei();
+                    Toast.makeText(activityPlaceholder, App.getContext().getResources().getString(R.string.scan_dateierstellt),Toast.LENGTH_LONG).show();
+                    Geraet.geraeteliste.clear();
+                    activityPlaceholder.startActivity(new Intent(activityPlaceholder, Hauptmenue.class));
+                }
+                else
+                {
+                    erstelleVerzeichnis();
+                }
             }
         }
     }
