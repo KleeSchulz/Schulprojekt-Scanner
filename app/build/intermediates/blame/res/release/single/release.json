@@ -8,12 +8,12 @@
         "source": "C:\\Users\\Christian\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\930f17c0387cadd13e7a845a39484eaa\\res\\color\\abc_primary_text_disable_only_material_light.xml"
     },
     {
-        "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\drawable-mdpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\generated\\res\\pngs\\release\\drawable-mdpi\\ic_launcher_background.png"
-    },
-    {
         "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\color_abc_hint_foreground_material_light.xml.flat",
         "source": "C:\\Users\\Christian\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\930f17c0387cadd13e7a845a39484eaa\\res\\color\\abc_hint_foreground_material_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\drawable-mdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\generated\\res\\pngs\\release\\drawable-mdpi\\ic_launcher_background.png"
     },
     {
         "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
@@ -184,20 +184,20 @@
         "source": "C:\\Users\\Christian\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\930f17c0387cadd13e7a845a39484eaa\\res\\drawable-ldrtl-mdpi-v17\\abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
-        "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\anim_abc_slide_in_bottom.xml.flat",
-        "source": "C:\\Users\\Christian\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\930f17c0387cadd13e7a845a39484eaa\\res\\anim\\abc_slide_in_bottom.xml"
-    },
-    {
         "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\mipmap-anydpi-v26_app_icon_round.xml.flat",
         "source": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\src\\main\\res\\mipmap-anydpi-v26\\app_icon_round.xml"
     },
     {
-        "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\animator_mtrl_chip_state_list_anim.xml.flat",
-        "source": "C:\\Users\\Christian\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\6e08e8173a56ddbba4f1a7c2758c0555\\res\\animator\\mtrl_chip_state_list_anim.xml"
+        "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\anim_abc_slide_in_bottom.xml.flat",
+        "source": "C:\\Users\\Christian\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\930f17c0387cadd13e7a845a39484eaa\\res\\anim\\abc_slide_in_bottom.xml"
     },
     {
         "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\color-v23_abc_tint_edittext.xml.flat",
         "source": "C:\\Users\\Christian\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\930f17c0387cadd13e7a845a39484eaa\\res\\color-v23\\abc_tint_edittext.xml"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\animator_mtrl_chip_state_list_anim.xml.flat",
+        "source": "C:\\Users\\Christian\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\6e08e8173a56ddbba4f1a7c2758c0555\\res\\animator\\mtrl_chip_state_list_anim.xml"
     },
     {
         "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4_abc_list_divider_mtrl_alpha.9.png.flat",
@@ -220,12 +220,12 @@
         "source": "C:\\Users\\Christian\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\6e08e8173a56ddbba4f1a7c2758c0555\\res\\drawable\\design_snackbar_background.xml"
     },
     {
-        "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\drawable-v21_abc_list_divider_material.xml.flat",
-        "source": "C:\\Users\\Christian\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\930f17c0387cadd13e7a845a39484eaa\\res\\drawable-v21\\abc_list_divider_material.xml"
-    },
-    {
         "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\drawable-xxxhdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
         "source": "C:\\Users\\Christian\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\930f17c0387cadd13e7a845a39484eaa\\res\\drawable-xxxhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\drawable-v21_abc_list_divider_material.xml.flat",
+        "source": "C:\\Users\\Christian\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\930f17c0387cadd13e7a845a39484eaa\\res\\drawable-v21\\abc_list_divider_material.xml"
     },
     {
         "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\drawable_abc_ic_arrow_drop_right_black_24dp.xml.flat",
@@ -252,12 +252,12 @@
         "source": "C:\\Users\\Christian\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\930f17c0387cadd13e7a845a39484eaa\\res\\drawable-hdpi-v4\\abc_list_pressed_holo_light.9.png"
     },
     {
-        "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\anim_abc_popup_exit.xml.flat",
-        "source": "C:\\Users\\Christian\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\930f17c0387cadd13e7a845a39484eaa\\res\\anim\\abc_popup_exit.xml"
-    },
-    {
         "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\drawable-xxhdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
         "source": "C:\\Users\\Christian\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\930f17c0387cadd13e7a845a39484eaa\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\anim_abc_popup_exit.xml.flat",
+        "source": "C:\\Users\\Christian\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\930f17c0387cadd13e7a845a39484eaa\\res\\anim\\abc_popup_exit.xml"
     },
     {
         "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4_abc_ic_menu_selectall_mtrl_alpha.png.flat",
@@ -292,12 +292,12 @@
         "source": "C:\\Users\\Christian\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\930f17c0387cadd13e7a845a39484eaa\\res\\drawable-xhdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
     },
     {
-        "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\drawable-anydpi-v21_ic_launcher_background.xml.flat",
-        "source": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\generated\\res\\pngs\\release\\drawable-anydpi-v21\\ic_launcher_background.xml"
-    },
-    {
         "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\color_mtrl_chip_ripple_color.xml.flat",
         "source": "C:\\Users\\Christian\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\6e08e8173a56ddbba4f1a7c2758c0555\\res\\color\\mtrl_chip_ripple_color.xml"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\drawable-anydpi-v21_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\generated\\res\\pngs\\release\\drawable-anydpi-v21\\ic_launcher_background.xml"
     },
     {
         "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4_design_ic_visibility.png.flat",
@@ -420,12 +420,12 @@
         "source": "C:\\Users\\Christian\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\464a9fe49179b67e4e38f5085165da75\\res\\drawable-xhdpi-v4\\notify_panel_notification_icon_bg.png"
     },
     {
-        "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4_abc_textfield_default_mtrl_alpha.9.png.flat",
-        "source": "C:\\Users\\Christian\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\930f17c0387cadd13e7a845a39484eaa\\res\\drawable-mdpi-v4\\abc_textfield_default_mtrl_alpha.9.png"
-    },
-    {
         "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\animator_mtrl_fab_show_motion_spec.xml.flat",
         "source": "C:\\Users\\Christian\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\6e08e8173a56ddbba4f1a7c2758c0555\\res\\animator\\mtrl_fab_show_motion_spec.xml"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4_abc_textfield_default_mtrl_alpha.9.png.flat",
+        "source": "C:\\Users\\Christian\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\930f17c0387cadd13e7a845a39484eaa\\res\\drawable-mdpi-v4\\abc_textfield_default_mtrl_alpha.9.png"
     },
     {
         "merged": "C:\\Users\\Christian\\Desktop\\Coding\\Appentwicklung\\Android-Projekte\\Schulprojekt-Scanner\\app\\build\\intermediates\\res\\merged\\release\\drawable_notification_bg_low.xml.flat",

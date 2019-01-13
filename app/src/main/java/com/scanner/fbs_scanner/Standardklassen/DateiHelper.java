@@ -206,7 +206,7 @@ public final class DateiHelper{
                 geloescht = f.delete();
             }
             if(geloescht){
-                String message = App.getContext().getResources().getString(R.string.dateihelper_msg_raumlöschen_1) + " " + raumname + " " + App.getContext().getResources().getString(R.string.dateihelper_msg_raumlöschen_2);
+                String message = App.getContext().getResources().getString(R.string.dateihelper_msg_raumloeschen_1) + " " + raumname + " " + App.getContext().getResources().getString(R.string.dateihelper_msg_raumloeschen_2);
                 Toast.makeText( activity, message,Toast.LENGTH_LONG ).show();
             }
        }

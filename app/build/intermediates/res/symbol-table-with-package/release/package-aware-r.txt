@@ -1394,8 +1394,8 @@ string dateihelper_alle_raeume_loeschen
 string dateihelper_alle_raeume_loeschen_message
 string dateihelper_berechtigung
 string dateihelper_berechtigung_message
-string dateihelper_msg_raumlöschen_1
-string dateihelper_msg_raumlöschen_2
+string dateihelper_msg_raumloeschen_1
+string dateihelper_msg_raumloeschen_2
 string default_cell
 string default_header
 string fab_transformation_scrim_behavior

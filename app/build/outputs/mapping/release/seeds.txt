@@ -9253,8 +9253,8 @@ com.scanner.fbs_scanner.R$string: int dateihelper_alle_raeume_loeschen
 com.scanner.fbs_scanner.R$string: int dateihelper_alle_raeume_loeschen_message
 com.scanner.fbs_scanner.R$string: int dateihelper_berechtigung
 com.scanner.fbs_scanner.R$string: int dateihelper_berechtigung_message
-com.scanner.fbs_scanner.R$string: int dateihelper_msg_raumlöschen_1
-com.scanner.fbs_scanner.R$string: int dateihelper_msg_raumlöschen_2
+com.scanner.fbs_scanner.R$string: int dateihelper_msg_raumloeschen_1
+com.scanner.fbs_scanner.R$string: int dateihelper_msg_raumloeschen_2
 com.scanner.fbs_scanner.R$string: int default_cell
 com.scanner.fbs_scanner.R$string: int default_header
 com.scanner.fbs_scanner.R$string: int fab_transformation_scrim_behavior

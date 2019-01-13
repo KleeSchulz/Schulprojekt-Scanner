@@ -5353,7 +5353,6 @@ com.scanner.fbs_scanner.Standardklassen.IntentResult:
     67:67:public byte[] getRawBytes()
     74:74:public java.lang.Integer getOrientation()
     81:81:public java.lang.String getErrorCorrectionLevel()
-com.scanner.fbs_scanner.Standardklassen.TinyDB
 de.codecrafters.tableview.BuildConfig
 de.codecrafters.tableview.InternalHeaderClickListener
 de.codecrafters.tableview.R:
