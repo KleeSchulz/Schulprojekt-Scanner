@@ -2030,7 +2030,7 @@
     <string name="hauptstring_btn_anzeigen">Räume anzeigen</string>
     <string name="hauptstring_btn_erfassen">Raum erfassen</string>
     <string name="hauptstring_keineraueme">Keine Räume zum Anzeigen vorhanden!</string>
-    <string name="hauptstring_link_FBS">https://www.ferdinand-braun-schule.de/blog/category/news/</string>
+    <string name="hauptstring_link_FBS">https://www.ferdinand-braun-schule.de/</string>
     <string name="hauptstring_raumerfassen">Raum erfassen</string>
     <string name="hauptstring_raumleer">Der Raumname darf nicht leer sein!</string>
     <string name="hauptstring_raumnameeingabe">Bitte Raumnamen eingeben:</string>

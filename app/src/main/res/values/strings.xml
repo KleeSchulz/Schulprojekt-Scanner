@@ -26,7 +26,7 @@
     <string name="hauptstring_raumscannen">Raum erfassen</string>
     <string name="hauptstring_raumleer">Der Raumname darf nicht leer sein!</string>
     <string name="hauptstring_keineraueme">Keine Räume zum Anzeigen vorhanden!</string>
-    <string name="hauptstring_link_FBS">https://www.ferdinand-braun-schule.de/blog/category/news/</string>
+    <string name="hauptstring_link_FBS">https://www.ferdinand-braun-schule.de/</string>
 
     <!-- Hauptmenü (XML) -->
     <string name="hauptstring_btn_erfassen">Raum erfassen</string>

@@ -5,35 +5,39 @@
     build-mode="COLD"
     density="420dpi"
     format="10"
+    ir-eligibility="COMPATIBLE"
     plugin-version="3.2.1"
-    timestamp="1547497102428"
+    timestamp="1547671232329"
     token="1675321815377761710"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="11626" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="177" />
     <task
         name="verifier"
-        duration="0" />
+        duration="222" />
 
     <artifact
-        location="C:\Users\Christian\Desktop\Coding\Appentwicklung\Android-Projekte\Schulprojekt-Scanner\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
-        type="SPLIT_MAIN" />
+        location="C:\Users\Christian\Desktop\Coding\Appentwicklung\Android-Projekte\Schulprojekt-Scanner\app\build\intermediates\resources\instant-run\debug\resources-debug.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\Christian\Desktop\Coding\Appentwicklung\Android-Projekte\Schulprojekt-Scanner\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+        type="SPLIT" />
 
     <build
         build-mode="FULL"
-        timestamp="1547417504727"
+        timestamp="1547662338431"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="C:\Users\Christian\Desktop\Coding\Appentwicklung\Android-Projekte\Schulprojekt-Scanner\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
-            type="SPLIT" />
+            location="C:\Users\Christian\Desktop\Coding\Appentwicklung\Android-Projekte\Schulprojekt-Scanner\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
+            type="SPLIT_MAIN" />
         <artifact
             location="C:\Users\Christian\Desktop\Coding\Appentwicklung\Android-Projekte\Schulprojekt-Scanner\app\build\intermediates\resources\instant-run\debug\resources-debug.apk"
             type="SPLIT" />
@@ -56,6 +60,9 @@
             location="C:\Users\Christian\Desktop\Coding\Appentwicklung\Android-Projekte\Schulprojekt-Scanner\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
             type="SPLIT" />
         <artifact
+            location="C:\Users\Christian\Desktop\Coding\Appentwicklung\Android-Projekte\Schulprojekt-Scanner\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            type="SPLIT" />
+        <artifact
             location="C:\Users\Christian\Desktop\Coding\Appentwicklung\Android-Projekte\Schulprojekt-Scanner\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
             type="SPLIT" />
         <artifact
@@ -67,17 +74,18 @@
         <artifact
             location="C:\Users\Christian\Desktop\Coding\Appentwicklung\Android-Projekte\Schulprojekt-Scanner\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
             type="SPLIT" />
-        <artifact
-            location="C:\Users\Christian\Desktop\Coding\Appentwicklung\Android-Projekte\Schulprojekt-Scanner\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
-            type="SPLIT_MAIN" />
     </build>
     <build
         build-mode="COLD"
-        timestamp="1547497102428"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1547671232329"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="C:\Users\Christian\Desktop\Coding\Appentwicklung\Android-Projekte\Schulprojekt-Scanner\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
-            type="SPLIT_MAIN" />
+            location="C:\Users\Christian\Desktop\Coding\Appentwicklung\Android-Projekte\Schulprojekt-Scanner\app\build\intermediates\resources\instant-run\debug\resources-debug.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Christian\Desktop\Coding\Appentwicklung\Android-Projekte\Schulprojekt-Scanner\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            type="SPLIT" />
     </build>
 
 </instant-run>

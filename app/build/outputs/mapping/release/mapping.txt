@@ -18485,6 +18485,7 @@ com.scanner.fbs_scanner.Activityklassen.Hauptmenue -> com.scanner.fbs_scanner.Ac
     android.widget.ImageButton ib_homepage -> m
     void <init>() -> <init>
     void onCreate(android.os.Bundle) -> onCreate
+    void onBackPressed() -> onBackPressed
     void onRequestPermissionsResult(int,java.lang.String[],int[]) -> onRequestPermissionsResult
 com.scanner.fbs_scanner.Activityklassen.Hauptmenue$1 -> com.scanner.fbs_scanner.Activityklassen.Hauptmenue$1:
     com.scanner.fbs_scanner.Activityklassen.Hauptmenue this$0 -> a

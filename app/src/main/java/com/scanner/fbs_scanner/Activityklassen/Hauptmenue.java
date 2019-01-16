@@ -132,6 +132,11 @@ public class Hauptmenue extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
     // nimmt das Ergebnis einer Permissionanfrage entgegen
     // diese Methode muss in jeder Activity implementiert werden, in der die Permissions angefragt werden
     @Override
